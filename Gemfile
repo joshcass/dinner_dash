@@ -46,5 +46,7 @@ group :development, :test do
   gem 'launchy'
 
   gem 'mocha'
+
+  gem 'database_cleaner'
 end
 
