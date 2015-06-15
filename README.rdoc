@@ -4,3 +4,44 @@
 * Ruby version - 2.2.1
 
 * heroku url: http://dashing-dinner.herokuapp.com
+
+
+_____________________________________________________________________________
+
+=== items
+* name
+* description
+* price
+* photo
+
+=== categories
+* name
+
+=== users + admin
+* username
+* password
+
+=== orders
+* purchaser name
+* items
+* quantity for each item
+* total for each item
+* total for the order
+* status - "ordered", "paid", "cancelled", "completed"
+* timestamps
+
+=== Thoughts:
+
+users have many items through orders
+
+items have many users through orders
+
+orders belong to a user and have many items
+
+users have many orders
+
+items have many orders
+
+categories have many items
+
+items have many categories
