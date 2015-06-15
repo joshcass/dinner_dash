@@ -45,5 +45,6 @@ group :development, :test do
 
   gem 'launchy'
 
+  gem 'mocha'
 end
 
