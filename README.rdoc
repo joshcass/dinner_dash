@@ -1,3 +1,4 @@
+{<img alt='Stories in Ready' src='https://badge.waffle.io/RMCornell/dinner_dash.png?label=ready&title=Ready' />}[https://waffle.io/RMCornell/dinner_dash]
 == README
 
 * Ruby version - 2.2.1
