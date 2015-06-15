@@ -39,13 +39,13 @@ _____________________________________________________________________________
 
 users have many items through orders
 
-items have many users through orders
+items have many users through order / order_items
 
-orders belong to a user and have many items
+orders belong to a user and have many items through order_items
 
 users have many orders
 
-items have many orders
+items have many orders through order_items
 
 categories have many items
 
