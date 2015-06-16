@@ -5,6 +5,9 @@
 
 * heroku url: http://dashing-dinner.herokuapp.com
 
+* Light Blue Color - Hex: #8deaf8  RGB: 141, 234, 248
+
+* Logo Set: https://www.dropbox.com/sh/ar288r04t9mvsp5/AAAclFikNMVNM2S3oIWhpaQka?dl=0
 
 _____________________________________________________________________________
 
