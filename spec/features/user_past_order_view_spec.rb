@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'user past order views', type: :feature do
-  let(:user) { User.create(first_name: "Justin", last_name: "Bieber", username: "beebz", password: "password", email: "beebz@gmail.com") }
+  let(:user) { Fabricate(:user) }
 
   before(:each) do
     ApplicationController.any_instance.stubs(:current_user).returns(user)
