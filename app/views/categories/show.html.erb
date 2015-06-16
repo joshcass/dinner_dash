@@ -1,0 +1,6 @@
+<%= @category.name %>
+
+<% @category.items.each do |item| %>
+  <%= item.name %> <%= item.price %><br>
+  <%= item.description %>
+<% end %>
