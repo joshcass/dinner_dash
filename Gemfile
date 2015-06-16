@@ -48,5 +48,9 @@ group :development, :test do
   gem 'mocha'
 
   gem 'database_cleaner'
+
+  gem 'fabrication'
+
+  gem 'faker'
 end
 
