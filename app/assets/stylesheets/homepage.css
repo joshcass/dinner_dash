@@ -1,0 +1,10 @@
+.homepage_body {
+  background: url("background.jpg");
+  background-size: cover;
+}
+
+.center_image {
+  max-width: 60%;
+  margin-left: 20%;
+}
+
