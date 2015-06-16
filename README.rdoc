@@ -1,10 +1,14 @@
 {<img alt='Stories in Ready' src='https://badge.waffle.io/RMCornell/dinner_dash.png?label=ready&title=Ready' />}[https://waffle.io/RMCornell/dinner_dash]
 == README
+* project spec: http://tutorials.jumpstartlab.com/projects/dinner_dash.html
 
-* Ruby version - 2.2.1
+* Ruby version: 2.2.1
 
 * heroku url: http://dashing-dinner.herokuapp.com
 
+* Light Blue Color: Hex: #8deaf8  RGB: 141, 234, 248
+
+* Logo Set: https://www.dropbox.com/sh/gjdqwp8avofp0xn/AACyxsgTxpOfefPXDA9oq0h-a?dl=0
 
 _____________________________________________________________________________
 
