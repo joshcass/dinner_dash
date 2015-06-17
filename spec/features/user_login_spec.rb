@@ -7,7 +7,7 @@ describe 'user login', type: :feature do
     visit login_path
     fill_in "Username", with: "Tom"
     fill_in "Password", with: "password"
-    click_button "Login"
+    click_button "LOGIN"
 
     expect(current_path).to eq(user_path(user))
   end

@@ -1,0 +1,39 @@
+<%= form_for @user do |f| %>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.label :display_name %>
+      <%= f.text_field :display_name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+  </div>
+  <div class="row">
+    <%= f.submit "#{action_name.upcase} ACCOUNT", class: "large button expand" %>
+  </div>
+<% end %>

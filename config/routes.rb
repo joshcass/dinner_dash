@@ -2,8 +2,14 @@ Rails.application.routes.draw do
   resources :items, only: [:index]
   resources :categories, only: [:show]
   resources :carts, only: [:create]
-  put '/carts', to: 'carts#update'
-  delete '/carts', to: "carts#destroy"
   resources :orders, only: [:new]
+  resources :users, only: [:new, :create, :show]
+
   root 'welcome#index'
+
+  put '/carts', to: "carts#update"
+  delete '/carts', to: "carts#destroy"
+  get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
+  delete '/logout', to: "sessions#destroy"
 end
