@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  validates :at_least_one_item
+  # validate :at_least_one_item
   validates :user, presence: true
 
   belongs_to :user

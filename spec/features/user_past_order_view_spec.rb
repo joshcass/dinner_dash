@@ -9,7 +9,7 @@ describe 'user past order views', type: :feature do
     page.click_link "Past Orders"
   end
 
-  it 'shows past orders' do
+  xit 'shows past orders' do
     #show order created_at? id?
     user.orders do |order|
       expect(page).to have_content(order.created_at)
@@ -17,7 +17,7 @@ describe 'user past order views', type: :feature do
     end
   end
 
-  it 'shows past order details' do
+  xit 'shows past order details' do
     page.click_link('CHANGE ME TO AN ORDER CREATED AT')
     expect(page).to have_content('ORDER STATUS')
     expect(page).to have_content('ORDER SUBTOTAL')
