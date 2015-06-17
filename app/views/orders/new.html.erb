@@ -1,0 +1,7 @@
+<div>
+  <% @order.order_items.each do |order_item| %>
+    <%= order_item.item.name %>
+    <%= order_item.quantity %>
+    <%= order_item.item.price %>
+  <% end %>
+</div>
