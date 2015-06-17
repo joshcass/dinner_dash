@@ -1,0 +1,5 @@
+<li>
+  <%= item.name %> <%= number_to_currency item.price %><br>
+  <%= item.description %>
+  <%= button_to "BUY", carts_path(item_id: item.id), class: "tiny button" %>
+</li>

@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
 
   def add_order_items(cart)
     cart.contents.each do |item_id, quantity|
-      self.order_items.new(item_id: item_id.to_i, quantity: quantity)
+      order_items.new(item_id: item_id.to_i, quantity: quantity)
     end
   end
 end

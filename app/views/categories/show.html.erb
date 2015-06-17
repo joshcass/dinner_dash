@@ -1,6 +1,10 @@
-<%= @category.name %>
-
-<% @category.items.each do |item| %>
-  <%= item.name %> <%= item.price %><br>
-  <%= item.description %>
-<% end %>
+<% content_for :title do %>Bluer Bottle Coffee: <%= @category.name %><% end %>
+<div>
+  <ul class="button-group even-12">
+    <li><%= link_to "ALL", items_path, class: "tiny button" %></li>
+    <%= render partial: @categories %>
+  </ul>
+  <ul class="small-block-grid-2 large-block-grid-6">
+    <%= render partial: @category.items %>
+  </ul>
+</div>

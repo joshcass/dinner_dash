@@ -1,11 +1,10 @@
+<% content_for :title do %>Shop Bluer Bottle Coffee<% end %>
 <div>
-  <% @categories.each do |category| %>
-    <%= link_to "#{category.name}", category %>
-  <% end %>
-
-  <% @items.each do |item| %>
-    <%= item.name %> <%= number_to_currency item.price %><br>
-    <%= item.description %>
-    <%= button_to "BUY", carts_path(item_id: item.id), class: "tiny button" %>
-  <% end %>
+  <ul class="button-group">
+    <li><%= link_to "ALL", items_path, class: "tiny button" %></li>
+    <%= render partial: @categories %>
+  </ul>
+  <ul class="small-block-grid-2 large-block-grid-6">
+    <%= render partial: @items %>
+  </ul>
 </div>

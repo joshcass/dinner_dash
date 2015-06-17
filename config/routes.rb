@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :carts, only: [:create]
   resources :orders, only: [:new]
+  root 'welcome#index'
 end
