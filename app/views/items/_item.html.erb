@@ -1,5 +1,11 @@
 <li>
   <%= item.name %> <%= number_to_currency item.price %><br>
   <%= item.description %>
-  <%= button_to "BUY", carts_path(item_id: item.id), class: "tiny button" %>
+  <%= form_tag carts_path, method: :post do %>
+    <%= label_tag :quantity %>
+    <%= number_field_tag :quantity %>
+    <%= hidden_field_tag :item_id, item.id %>
+    <%= submit_tag "BUY", class: "tiny button" %>
+  <% end %>
 </li>
+  <!--<%= button_to "BUY", carts_path(item_id: item.id), class: "tiny button" %>-->
