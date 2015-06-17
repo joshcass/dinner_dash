@@ -1,4 +1,8 @@
 class Order < ActiveRecord::Base
+  validates :at_least_one_item
+  validates :user, presence: true
+
+  belongs_to :user
   has_many :order_items
   has_many :items, through: :order_items
 
@@ -6,5 +10,11 @@ class Order < ActiveRecord::Base
     cart.contents.each do |item_id, quantity|
       order_items.new(item_id: item_id.to_i, quantity: quantity)
     end
+  end
+
+  private
+
+  def at_least_one_item
+    errors.add(:base, 'must add at least one item') if self.items.empty?
   end
 end

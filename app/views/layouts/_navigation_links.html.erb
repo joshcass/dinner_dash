@@ -3,10 +3,17 @@
     <li class="divider"></li>
     <li><%= link_to "SHOP", items_path %></li>
     <li class="divider"></li>
-    <li><%= link_to "LOGIN", items_path %></li>
-    <li class="divider"></li>
-    <li><%= link_to "SIGNUP", new_user_path %></li>
-    <li class="divider"></li>
+    <% if logged_in? %>
+      <li><%= link_to "#{current_user.first_name.upcase}", current_user %></li>
+      <li class="divider"></li>
+      <li><%= link_to "LOGOUT", logout_path, method: :delete %></li>
+      <li class="divider"></li>
+    <% else %>
+      <li><%= link_to "LOGIN", login_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "SIGNUP", new_user_path %></li>
+      <li class="divider"></li>
+    <% end %>
     <li><%= link_to image_tag("fi-shopping-cart.png", width: '20'), new_order_path %></li>
     <li class="divider"></li>
   </ul>
