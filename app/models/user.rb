@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
                        confirmation: true
   validates :password_confirmation, presence: true
   enum role: %w(default admin)
+
+  has_many :orders
 end

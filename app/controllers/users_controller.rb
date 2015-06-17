@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_user, except: [:new, :create]
+  skip_before_action :current_user?, only: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -6,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new valid_params
     if @user.save
-      # session[:user_id] = @user.id
+      session[:user_id] = @user.id
       redirect_to @user, notice: "Welcome to your new Bluer Bottle Coffee account."
     else
       flash.now[:errors] = @user.errors.full_messages.join(", ")
@@ -15,10 +18,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def valid_params
     params.require(:user).permit(
