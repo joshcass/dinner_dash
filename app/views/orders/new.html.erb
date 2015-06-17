@@ -6,6 +6,7 @@
     <th>Description</th>
     <th width="150">Quantity</th>
     <th width="150">Price</th>
+    <th width="50">Remove Item</th>
   </tr>
   </thead>
   <tbody>
@@ -13,8 +14,16 @@
     <tr>
       <td><%= order_item.item.name %></td>
       <td><%= order_item.item.description %></td>
-      <td style="text-align:right"><%= order_item.quantity %></td>
+      <td style="text-align:right">
+        <%= form_tag carts_path, method: :put do %>
+          <%= number_field_tag :quantity, order_item.quantity %>
+          <%= hidden_field_tag :item_id, order_item.item.id %>
+          <%= submit_tag "UPDATE", class: "tiny button" %>
+        <% end %>
+      </td>
       <td style="text-align:right"><%= number_to_currency order_item.item.price %></td>
+      <td><%= link_to "X", carts_path(item_id: order_item.item.id), method: :delete %></td>
     </tr>
   <% end %>
   </table>
+  <%= link_to "CHECKOUT", items_path, class: "small button" %>
