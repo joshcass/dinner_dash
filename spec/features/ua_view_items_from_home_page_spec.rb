@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe 'unauthorized user view items by item and category', type: :feature do
   let(:item1) { Fabricate(:item) }
   let(:item2) { Fabricate(:item) }
