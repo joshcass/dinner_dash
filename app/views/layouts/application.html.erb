@@ -1,44 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Bluer Bottle Coffee" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Bluer Bottle Coffee" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller_name %>_<%= action_name %>">
+<header>
+  <%= render 'layouts/navigation' %>
+</header>
+<main role="main">
+  <%= render 'layouts/messages' %>
 
-  <body class='homepage_body'>
-  <nav class="top-bar" data-topbar>
-    <ul class="title-area">
-      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-    </ul>
-    <div class="logo">
-      <%= link_to image_tag("PBB_WhiteText_400x75.png"), items_path %>
-    </div>
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="center-buttons">
-        <li class="divider"></li>
-        <li><%= link_to "SHOP", items_path %></li>
-        <li class="divider"></li>
-        <li><%= link_to "LOGIN", items_path %></li>
-        <li class="divider"></li>
-        <li><%= link_to "SIGNUP", items_path %></li>
-        <li class="divider"></li>
-        <li><%= link_to image_tag("fi-shopping-cart.png", width: '20'), new_order_path %></li>
-        <li class="divider"></li>
-      </ul>
-    </section>
-  </nav>
-  <div><%= image_tag("PBB_text_white.png", class: "center_image")%></div>
-  <div class="small-6-centered text-center columns"><%= link_to "Shop Coffee", items_path, class: "button" %></div>
   <%= yield %>
-
-  </body>
+</main>
+</body>
 </html>
