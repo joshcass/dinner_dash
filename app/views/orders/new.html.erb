@@ -14,7 +14,7 @@
     <tr>
       <td><%= order_item.item.name %></td>
       <td><%= order_item.item.description %></td>
-      <td style="text-align:right">
+      <td style="text-align:right" id="update_quantity">
         <%= form_tag carts_path, method: :put do %>
           <%= number_field_tag :quantity, order_item.quantity %>
           <%= hidden_field_tag :item_id, order_item.item.id %>

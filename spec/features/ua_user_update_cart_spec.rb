@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user is able to add items to cart', type: :feature do
+describe 'user is able to update items inside cart', type: :feature do
   let(:item1) { Fabricate(:item) }
   let(:item2) { Fabricate(:item) }
   let(:category1) { Fabricate(:category) }
@@ -16,14 +16,6 @@ describe 'user is able to add items to cart', type: :feature do
     Fabrication.clear_definitions
   end
 
-  it 'allows user to view cart' do
-    expect(page).to have_link("cart_link")
-
-    click_link("cart_link")
-    expect(page).to have_content("Item")
-    expect(page).to have_content("Remove Item")
-  end
-
   it 'allows user to update cart quanties' do
     #=====shop=====
     click_link('SHOP')
@@ -31,13 +23,10 @@ describe 'user is able to add items to cart', type: :feature do
     expect(page).to have_content(item1.description)
     expect(page).to have_content(item1.price)
 
-    fill_in('Quantity', with: '1', :match => :first )
-    click_button('BUY', :match => :first)
+    find(".select_tag", :match => :first).find(:xpath, 'option[2]').select_option
+    click_button('ADD TO CART', :match => :first)
 
     expect(page).to have_content("You now have 1")
-
-    fill_in('Quantity', with: '1', :match => :first )
-    click_button('BUY', :match => :first)
 
     #=====visit cart=====
     click_link("cart_link")
@@ -46,15 +35,14 @@ describe 'user is able to add items to cart', type: :feature do
     expect(page).to have_content("Remove Item")
 
     #======update quantities=====
-    # within_table("cart_table") do
-    # fill_in 'quantity', :with => 2
-    # end
-    #
-    # page.find('table', :text => "Quantity").click_link("UPDATE")
-    #
-    # expect(page).to have_content("Your cart has been updated.")
+    within_table("cart_table") do
+    fill_in 'quantity', :with => 2
+    end
 
+    within_table("cart_table") do
+      click_button("UPDATE")
+      end
 
-
+    expect(page).to have_content("Your cart has been updated.")
   end
 end

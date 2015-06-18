@@ -22,13 +22,13 @@ describe 'user is able to add items to cart', type: :feature do
     expect(page).to have_content(item1.description)
     expect(page).to have_content(item1.price)
 
-    fill_in('Quantity', with: '1', :match => :first )
-    click_button('BUY', :match => :first)
+    find('.select_tag', :match => :first).find(:xpath, 'option[2]').select_option
+    click_button('ADD TO CART', :match => :first)
 
     expect(page).to have_content("You now have 1")
 
-    fill_in('Quantity', with: '1', :match => :first )
-    click_button('BUY', :match => :first)
+    find('.select_tag', :match => :first).find(:xpath, 'option[2]').select_option
+    click_button('ADD TO CART', :match => :first)
 
     expect(page).to have_content("You now have 2")
 
