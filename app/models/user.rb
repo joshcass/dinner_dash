@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
                     uniqueness: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
   validates :first_name, :last_name, presence: true
-  validates :display_name, length: { in: 2..32 }
+  validates :display_name, length: { in: 2..32 },
+            allow_blank: true
 
   validates :password, presence: true,
                        confirmation: true

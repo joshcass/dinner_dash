@@ -37,7 +37,7 @@ describe 'user is able to update items inside cart', type: :feature do
 
     #======update quantities=====
     within_table("cart_table") do
-    fill_in 'quantity', :with => 2
+    find('#quantity',:match => :first).find(:xpath, 'option[2]').select_option
     end
 
     within_table("cart_table") do
