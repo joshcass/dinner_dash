@@ -5,4 +5,8 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.add_order_items(@cart)
   end
+
+  def create
+    render nothing: true
+  end
 end
