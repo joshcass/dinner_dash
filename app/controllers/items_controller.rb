@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @categories = Category.all
-    @items = Item.all
+    @items = Item.active
   end
 
   def show
