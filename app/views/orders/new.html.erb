@@ -16,7 +16,7 @@
       <td><%= order_item.item.description %></td>
       <td style="text-align:right" id="update_quantity">
         <%= form_tag carts_path, method: :put do %>
-          <%= select_tag :quantity, options_for_select((0..20), order_item.quantity), class: 'select_tag' %>
+          <%= select_tag :quantity, options_for_select((0..(order_item.quantity + 10)), order_item.quantity), class: 'select_tag' %>
           <%= hidden_field_tag :item_id, order_item.item.id %>
           <%= submit_tag "UPDATE", class: "tiny button" %>
         <% end %>
