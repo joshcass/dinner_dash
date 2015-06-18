@@ -5,4 +5,12 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.add_order_items(@cart)
   end
+
+  def create
+    
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
 end
