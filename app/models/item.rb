@@ -14,6 +14,8 @@ class Item < ActiveRecord::Base
   has_attached_file :image, default_url: 'missing_image.jpg'
   validates_attachment_content_type :image, content_type: ['image/jpg', 'image/jpeg', 'image/png']
 
+  enum status: %w(active retired)
+
   private
 
   def at_least_one_category
