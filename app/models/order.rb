@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   # validate :at_least_one_item
   validates :user, presence: true
+  validates :status, presence: true
 
   belongs_to :user
   has_many :order_items
