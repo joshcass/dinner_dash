@@ -24,6 +24,7 @@ gem 'skylight'
 gem 'sass-rails'
 
 gem 'foundation-rails'
+gem 'compass-rails'
 
 gem 'paperclip','~> 4.2'
 # Use ActiveModel has_secure_password

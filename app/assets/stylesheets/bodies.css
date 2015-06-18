@@ -11,7 +11,7 @@
 }
 
 .select_tag {
-  width: 3rem;
+  width: 6rem;
 }
 
 .index_img {
@@ -25,4 +25,23 @@
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;
   -webkit-transition: opacity .25s ease-in-out;
+}
+
+.index_a {
+  color: #333333;
+  opacity: 1.0;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.index_a:hover {
+  color: #999999;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.index_description {
+  font-size: 0.8rem;
 }
