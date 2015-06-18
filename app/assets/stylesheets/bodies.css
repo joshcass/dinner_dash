@@ -13,3 +13,16 @@
 .select_tag {
   width: 3rem;
 }
+
+.index_img {
+  opacity: 1.0;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+.index_img:hover {
+  opacity: 0.6;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
