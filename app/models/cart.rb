@@ -6,8 +6,10 @@ class Cart
   end
 
   def add_item(item_id, quantity)
-    contents[item_id.to_s] ||= 0
-    contents[item_id.to_s] += quantity.to_i
+    unless quantity.to_i.zero?
+      contents[item_id.to_s] ||= 0
+      contents[item_id.to_s] += quantity.to_i
+    end
   end
 
   def count_of(item_id)
@@ -15,7 +17,9 @@ class Cart
   end
 
   def update_item(item_id, quantity)
-    contents[item_id.to_s] = quantity.to_i
+    unless quantity.to_i.zero?
+      contents[item_id.to_s] = quantity.to_i
+    end
   end
 
   def remove_item(item_id)

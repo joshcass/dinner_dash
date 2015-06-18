@@ -10,6 +10,7 @@ class CartsController < ApplicationController
     redirect_to items_path
   end
 
+
   def update
     @cart.update_item(@item.id, params[:quantity])
     flash[:notice] = "Your cart has been updated."
