@@ -39,11 +39,26 @@
   </div>
 </div>
 <div class="large-5 columns">
-  <%= @user.first_name %>
-  <%= @user.last_name %>
-  <%= @user.display_name %>
-  <%= @user.email %>
-  <p>Joined <%= time_ago_in_words(@user.created_at) %> ago.</p>
-  <p> Coffees purchased: <%= @user.total_items_purchased %></p>
+  <div class="row" data-equalizer>
+    <div class="small-6 columns panel" data-equalizer-watch>
+      <h3><%= @user.first_name %>
+        <%= @user.last_name %></h3>
+      <p style="color:#01a1dd"><%= @user.email %></p>
+    </div>
+    <div class="small-5 columns panel text-center" data-equalizer-watch>
+      <h4>Display Name</h4>
+      <h3 style="color:#01a1dd"><%= @user.display_name %></h3>
+    </div>
+  </div>
+  <div class="row" data-equalizer>
+    <div class="small-6 columns panel text-center" data-equalizer-watch>
+      <h5>Coffees Purchased</h5>
+      <h2 style="color:#01a1dd"><%= @user.total_items_purchased %></h2>
+    </div>
+    <div class="small-5 columns panel text-center" data-equalizer-watch>
+      <h5>Joined</h5>
+        <h4 style="color:#01a1dd"><%= time_ago_in_words(@user.created_at) %> ago</h4>
+    </div>
+  </div>
 </div>
 
