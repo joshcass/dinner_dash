@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  # validate :at_least_one_item
+  validate :at_least_one_item
   validates :user, presence: true
   validates :status, presence: true
 
@@ -22,6 +22,6 @@ class Order < ActiveRecord::Base
   private
 
   def at_least_one_item
-    errors.add(:base, 'must add at least one item') if self.items.empty?
+    errors.add(:base, 'Your cart is empty') if order_items.empty?
   end
 end

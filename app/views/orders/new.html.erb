@@ -1,4 +1,4 @@
-<% content_for :title do %>Bluer Bottle Coffee Shopping Cart<% end %>
+<% content_for :title do %>Cart | Bluer Bottle Coffee<% end %>
 <table id="cart_table">
   <thead>
   <tr>
@@ -26,4 +26,7 @@
     </tr>
   <% end %>
   </table>
-  <%= button_to "CHECKOUT", orders_path, class: "small button" %>
+<ul class="inline-list">
+  <li><%= link_to "Continue Shopping", items_path %></li>
+  <li><%= button_to "CHECKOUT", orders_path, class: "small button" %></li>
+</ul>

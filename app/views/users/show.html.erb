@@ -1,3 +1,4 @@
+<% content_for :title do %><%= @user.first_name %> | Bluer Bottle Coffee<% end %>
 <div class="large-7 columns">
   <ul class="tabs" data-tab>
     <li class="tab-title active"><a href="#order_history">Order History</a></li>
@@ -22,8 +23,8 @@
             <td class="text-right"><%= number_to_currency order.order_total %></td>
             <!--<td class="text-center"><#%= link_to "DETAILS", order, class: "tiny button" %></td>-->
             <td class="text-center">
-              <a href="#" data-reveal-id="order_show" class="tiny button">DETAILS</a>
-              <div id="order_show" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+              <a href="#" data-reveal-id="order_<%= order.id %>" class="tiny button">DETAILS</a>
+              <div id="order_<%= order.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
                 <%= render partial: 'orders/show', locals: { order: order } %>
                 <a class="close-reveal-modal" aria-label="Close">&#215;</a>
               </div>
@@ -38,4 +39,9 @@
     </div>
   </div>
 </div>
-<div class="large-5 columns">more stuff</div>
+<div class="large-5 columns">
+  <%= @user.first_name %>
+  <%= @user.last_name %>
+  <%= @user.display_name %>
+  <%= @user.email %>
+</div>

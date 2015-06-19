@@ -1492,10 +1492,7 @@ $include-html-global-classes: $include-html-classes;
 }
 
 .alert-box {
-  position: absolute;
-  z-index: 10;
   width: 100%;
-  opacity: 0.9;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
