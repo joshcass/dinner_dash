@@ -1,13 +1,14 @@
-<% content_for :title do %>Order <%= @order.created_at %><% end %>
-<h1>Order <%= @order.created_at %></h1>
-<h2>Status: <%= @order.status %></h2>
-<table id="cart_table">
+<% content_for :title do %>Order Details<% end %>
+<h1 style="text-align:center">Order Details</h1>
+<table id="order_show">
   <thead>
   <tr>
     <th width="150">Item</th>
     <th>Description</th>
     <th width="150">Quantity</th>
     <th width="150">Price</th>
+    <th>Date</th>
+    <th>Status</th>
   </tr>
   </thead>
   <tbody>
@@ -16,7 +17,9 @@
       <td><%= order_item.item.name %></td>
       <td><%= order_item.item.description %></td>
       <td><%= order_item.quantity %></td>
-      <td style="text-align:right"><%= number_to_currency order_item.item.price %></td>
+      <td style="text-align:left"><%= number_to_currency order_item.item.price %></td>
+      <td><%= order_item.created_at %></td>
+      <td><%= @order.status %></td>
     </tr>
   <% end %>
   </table>
