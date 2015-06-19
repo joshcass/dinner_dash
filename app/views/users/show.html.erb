@@ -1,25 +1,41 @@
-<div class="large-9 columns">
+<div class="large-7 columns">
   <ul class="tabs" data-tab>
-    <li class="tab-title active"><a href="#panel1">Tab 1</a></li>
-    <li class="tab-title"><a href="#panel2">Tab 2</a></li>
-    <li class="tab-title"><a href="#panel3">Tab 3</a></li>
-    <li class="tab-title"><a href="#panel4">Tab 4</a></li>
+    <li class="tab-title active"><a href="#order_history">Order History</a></li>
+    <li class="tab-title"><a href="#edit_account">Edit Account</a></li>
   </ul>
   <div class="tabs-content">
-    <div class="content active" id="panel1">
-      <p>This is the first panel of the basic tab example. You can place all sorts of content here including a grid.</p>
+    <div class="content active" id="order_history">
+      <table id="cart_table">
+        <thead>
+        <tr>
+          <th width="100" class="text-center">Status</th>
+          <th width="150" class="text-center">Date Ordered</th>
+          <th width="100" class="text-center">Total</th>
+          <th width="150"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @user.orders.each do |order| %>
+          <tr>
+            <td class="text-center"><%= order.status %></td>
+            <td class="text-center"><%= time_tag order.created_at, format: "%b %-d, %Y" %></td>
+            <td class="text-right"><%= number_to_currency order.order_total %></td>
+            <!--<td class="text-center"><#%= link_to "DETAILS", order, class: "tiny button" %></td>-->
+            <td class="text-center">
+              <a href="#" data-reveal-id="order_show" class="tiny button">DETAILS</a>
+              <div id="order_show" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                <%= render partial: 'orders/show', locals: { order: order } %>
+                <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
-    <div class="content" id="panel2">
-      <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
-    </div>
-    <div class="content" id="panel3">
-      <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
-    </div>
-    <div class="content" id="panel4">
-      <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+    <div class="content" id="edit_account">
+      <%= render 'form' %>
     </div>
   </div>
 </div>
-<div class="large-3 columns">more stuff</div>
-
-
+<div class="large-5 columns">more stuff</div>

@@ -15,6 +15,10 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def order_total
+    order_items.map(&:item_total).reduce(:+)
+  end
+
   private
 
   def at_least_one_item

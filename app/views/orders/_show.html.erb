@@ -1,6 +1,6 @@
-<% content_for :title do %>Order <%= @order.created_at %><% end %>
-<h1>Order <%= @order.created_at %></h1>
-<h2>Status: <%= @order.status %></h2>
+<% content_for :title do %>Order <%= order.created_at %><% end %>
+<h1>Order <%= order.created_at %></h1>
+<h2>Status: <%= order.status %></h2>
 <table id="cart_table">
   <thead>
   <tr>
@@ -11,7 +11,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @order.order_items.each do |order_item| %>
+  <% order.order_items.each do |order_item| %>
     <tr>
       <td><%= order_item.item.name %></td>
       <td><%= order_item.item.description %></td>
@@ -19,4 +19,5 @@
       <td style="text-align:right"><%= number_to_currency order_item.item.price %></td>
     </tr>
   <% end %>
-  </table>
+  </tbody>
+</table>

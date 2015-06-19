@@ -2,27 +2,27 @@
 <table id="cart_table">
   <thead>
   <tr>
-    <th width="150">Item</th>
-    <th>Description</th>
-    <th width="150">Quantity</th>
-    <th width="150">Price</th>
-    <th width="50">Remove Item</th>
+    <th width="150" class="text-center">Item</th>
+    <th class="text-center">Description</th>
+    <th class="text-center" width="150">Quantity</th>
+    <th class="text-center" width="150">Price</th>
+    <th class="text-center" width="50">Remove Item</th>
   </tr>
   </thead>
   <tbody>
   <% @order.order_items.each do |order_item| %>
     <tr>
-      <td><%= order_item.item.name %></td>
-      <td><%= order_item.item.description %></td>
-      <td style="text-align:center" id="update_quantity">
+      <td class="text-center"><%= order_item.item.name %></td>
+      <td class="text-center"><%= order_item.item.description %></td>
+      <td class="text-center" id="update_quantity">
         <%= form_tag carts_path, method: :put do %>
-          <%= select_tag :quantity, options_for_select((0..(order_item.quantity + 10)), order_item.quantity), class: 'select_tag' %>
+          <%= select_tag :quantity, options_for_select(quantity_range(order_item), order_item.quantity), class: 'select_tag' %>
           <%= hidden_field_tag :item_id, order_item.item.id %>
           <%= submit_tag "UPDATE", class: "tiny button" %>
         <% end %>
       </td>
-      <td style="text-align:center"><%= number_to_currency order_item.item.price %></td>
-      <td style="text-align:center"><strong><%= link_to "X", carts_path(item_id: order_item.item.id), method: :delete %></strong></td>
+      <td class="text-center"><%= number_to_currency order_item.item.price %></td>
+      <td class="text-center"><strong><%= link_to "X", carts_path(item_id: order_item.item.id), method: :delete %></strong></td>
     </tr>
   <% end %>
   </table>

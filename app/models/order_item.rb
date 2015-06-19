@@ -4,5 +4,9 @@ class OrderItem < ActiveRecord::Base
 
   belongs_to :order
   belongs_to :item
+
+  def item_total
+    quantity * item.price
+  end
 end
 
