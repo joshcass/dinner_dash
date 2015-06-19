@@ -14,16 +14,16 @@
     <tr>
       <td><%= order_item.item.name %></td>
       <td><%= order_item.item.description %></td>
-      <td style="text-align:right" id="update_quantity">
+      <td style="text-align:center" id="update_quantity">
         <%= form_tag carts_path, method: :put do %>
           <%= select_tag :quantity, options_for_select((0..(order_item.quantity + 10)), order_item.quantity), class: 'select_tag' %>
           <%= hidden_field_tag :item_id, order_item.item.id %>
           <%= submit_tag "UPDATE", class: "tiny button" %>
         <% end %>
       </td>
-      <td style="text-align:right"><%= number_to_currency order_item.item.price %></td>
-      <td><%= link_to "X", carts_path(item_id: order_item.item.id), method: :delete %></td>
+      <td style="text-align:center"><%= number_to_currency order_item.item.price %></td>
+      <td style="text-align:center"><strong><%= link_to "X", carts_path(item_id: order_item.item.id), method: :delete %></strong></td>
     </tr>
   <% end %>
   </table>
-  <%= link_to "CHECKOUT", orders_path, method: :post, class: "small button" %>
+  <%= button_to "CHECKOUT", orders_path, method: :post, class: "small button" %>
