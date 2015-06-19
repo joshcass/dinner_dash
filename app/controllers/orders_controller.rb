@@ -7,6 +7,20 @@ class OrdersController < ApplicationController
   end
 
   def create
-    render nothing: true
+    @order = Order.new
+    @order.add_order_items(@cart)
+    @order.user_id = session[:user_id]
+
+    if @order.save
+      @cart.remove_all
+      redirect_to @order, notice: "Order Completed!"
+    else
+      flash.now[:errors] = @order.errors.full_messages.join(", ")
+      render :new
+    end
+  end
+
+  def show
+    @order = Order.find(params[:id])
   end
 end
