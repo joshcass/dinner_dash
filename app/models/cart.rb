@@ -25,4 +25,8 @@ class Cart
   def remove_item(item_id)
     contents.delete(item_id.to_s)
   end
+
+  def remove_all
+    contents.clear
+  end
 end
