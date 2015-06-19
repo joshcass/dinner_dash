@@ -1,22 +1,64 @@
-<!--<div class="row">-->
-  <!--<div class="large-8 columns">-->
-
-  <!--</div>-->
-  <!--<div class="large-4 columns">more stuff</div>-->
-<!--</div>-->
-
-
-<div class="section-container auto" data-section>
-  <section class="active">
-    <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
-    <div class="content" data-section-content>
-      <p>Content of section 1.</p>
+<% content_for :title do %><%= @user.first_name %> | Bluer Bottle Coffee<% end %>
+<div class="large-7 columns">
+  <ul class="tabs" data-tab>
+    <li class="tab-title active"><a href="#order_history">Order History</a></li>
+    <li class="tab-title"><a href="#edit_account">Edit Account</a></li>
+  </ul>
+  <div class="tabs-content">
+    <div class="content active" id="order_history">
+      <table id="history" class="display" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th width="100" class="text-center">Status</th>
+          <th width="150" class="text-center">Date Ordered</th>
+          <th width="100" class="text-center">Total</th>
+          <th width="150"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @user.orders.each do |order| %>
+          <tr>
+            <td class="text-center"><%= order.status %></td>
+            <td class="text-center"><%= time_tag order.created_at, format: "%b %-d, %Y" %></td>
+            <td class="text-center"><%= number_to_currency order.total_cost %></td>
+            <td class="text-center">
+              <a href="#" data-reveal-id="order_<%= order.id %>" class="tiny button">DETAILS</a>
+              <div id="order_<%= order.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                <%= render partial: 'orders/show', locals: { order: order } %>
+                <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
-  </section>
-  <section>
-    <p class="title" data-section-title><a href="#panel2">Section 2</a></p>
-    <div class="content" data-section-content>
-      <p>Content of section 2.</p>
+    <div class="content" id="edit_account">
+      <%= render 'form' %>
     </div>
-  </section>
+  </div>
 </div>
+<div class="large-5 columns">
+  <div class="row" data-equalizer>
+    <div class="small-6 columns panel" data-equalizer-watch>
+      <h3><%= @user.first_name %>
+        <%= @user.last_name %></h3>
+      <p style="color:#01a1dd"><%= @user.email %></p>
+    </div>
+    <div class="small-5 columns panel text-center" data-equalizer-watch>
+      <h4>Display Name</h4>
+      <h3 style="color:#01a1dd"><%= @user.display_name %></h3>
+    </div>
+  </div>
+  <div class="row" data-equalizer>
+    <div class="small-6 columns panel text-center" data-equalizer-watch>
+      <h5>Coffees Purchased</h5>
+      <h2 style="color:#01a1dd"><%= @user.total_items_purchased %></h2>
+    </div>
+    <div class="small-5 columns panel text-center" data-equalizer-watch>
+      <h5>Joined</h5>
+        <h4 style="color:#01a1dd"><%= time_ago_in_words(@user.created_at) %> ago</h4>
+    </div>
+  </div>
+</div>
+

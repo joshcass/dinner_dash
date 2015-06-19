@@ -13,14 +13,10 @@ class OrdersController < ApplicationController
 
     if @order.save
       @cart.remove_all
-      redirect_to @order, notice: "Order Completed!"
+      redirect_to @order.user, notice: "Order Completed!"
     else
       flash.now[:errors] = @order.errors.full_messages.join(", ")
       render :new
     end
-  end
-
-  def show
-    @order = Order.find(params[:id])
   end
 end
