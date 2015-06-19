@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :items, through: :order_items
 
-  enum status: %w(ordered paid cancelled completed)
+  enum status: %w(Ordered Paid Cancelled Completed)
 
   def add_order_items(cart)
     cart.contents.each do |item_id, quantity|
