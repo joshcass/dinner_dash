@@ -15,4 +15,9 @@ class User < ActiveRecord::Base
   enum role: %w(default admin)
 
   has_many :orders
+
+
+  def total_items_purchased
+    orders.map(&:total_items).reduce(:+)
+  end
 end

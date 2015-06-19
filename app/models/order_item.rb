@@ -5,7 +5,7 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :item
 
-  def item_total
+  def price_subtotal
     quantity * item.price
   end
 end

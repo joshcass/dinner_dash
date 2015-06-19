@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :items, through: :order_items
 
-  enum status: %w(Ordered Paid Cancelled Completed)
+  enum status: %w(ordered paid cancelled completed)
 
   def add_order_items(cart)
     cart.contents.each do |item_id, quantity|
@@ -15,8 +15,12 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def order_total
-    order_items.map(&:item_total).reduce(:+)
+  def total_cost
+    order_items.map(&:price_subtotal).reduce(:+)
+  end
+
+  def total_items
+    order_items.sum(:quantity)
   end
 
   private

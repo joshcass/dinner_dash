@@ -6,7 +6,7 @@
   </ul>
   <div class="tabs-content">
     <div class="content active" id="order_history">
-      <table id="cart_table">
+      <table id="history" class="display" cellspacing="0" width="100%">
         <thead>
         <tr>
           <th width="100" class="text-center">Status</th>
@@ -20,8 +20,7 @@
           <tr>
             <td class="text-center"><%= order.status %></td>
             <td class="text-center"><%= time_tag order.created_at, format: "%b %-d, %Y" %></td>
-            <td class="text-right"><%= number_to_currency order.order_total %></td>
-            <!--<td class="text-center"><#%= link_to "DETAILS", order, class: "tiny button" %></td>-->
+            <td class="text-center"><%= number_to_currency order.total_cost %></td>
             <td class="text-center">
               <a href="#" data-reveal-id="order_<%= order.id %>" class="tiny button">DETAILS</a>
               <div id="order_<%= order.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
@@ -44,4 +43,7 @@
   <%= @user.last_name %>
   <%= @user.display_name %>
   <%= @user.email %>
+  <p>Joined <%= time_ago_in_words(@user.created_at) %> ago.</p>
+  <p> Coffees purchased: <%= @user.total_items_purchased %></p>
 </div>
+
