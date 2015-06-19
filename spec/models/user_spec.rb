@@ -36,4 +36,11 @@ RSpec.describe User, type: :model do
     user.email = nil
     expect(user).to_not be_valid
   end
+
+  #Sad Path Tests
+
+  it 'is invalid with short user name' do
+    user.display_name = 'a'
+    expect(user).to_not be_valid
+  end
 end
