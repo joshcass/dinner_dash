@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  let(:item) {Fabricate(:item)}
+  let(:item) { item = Fabricate.build(:item)
+                item.categories << category
+                item.save
+                item}
+  let(:category) { Fabricate(:category) }
+
 
   it 'is valid' do
     expect(item).to be_valid

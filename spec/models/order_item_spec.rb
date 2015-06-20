@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe OrderItem, type: :model do
-  let(:item) { Fabricate(:item) }
+  let(:item) { item = Fabricate.build(:item)
+               item.categories << category
+               item.save
+               item}
+  let(:category) { Fabricate(:category) }
   let(:order) { Order.create(status: 0) }
   let(:order_item) { OrderItem.create(order_id: order.id, item_id: item.id, quantity: 3) }
 
