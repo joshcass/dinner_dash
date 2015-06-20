@@ -1,8 +1,14 @@
 require 'rails_helper'
 
 describe 'user is able to remove items from cart', type: :feature do
-  let(:item1) { Fabricate(:item) }
-  let(:item2) { Fabricate(:item) }
+  let(:item1) { item = Fabricate.build(:item)
+                item.categories << category1
+                item.save
+                item}
+  let(:item2) { item = Fabricate.build(:item)
+                item.categories << category2
+                item.save
+                item}
   let(:category1) { Fabricate(:category) }
   let(:category2) { Fabricate(:category) }
 

@@ -1,14 +1,20 @@
 require 'rails_helper'
 
 describe 'us user can browse items', type: :feature do
-  let(:item1) { Fabricate(:item) }
-  let(:item2) { Fabricate(:item) }
   let(:category1) { Fabricate(:category) }
   let(:category2) { Fabricate(:category) }
+  let(:item1) { item = Fabricate.build(:item)
+                item.categories << category1
+                item.save
+                item}
+  let(:item2) { item = Fabricate.build(:item)
+                item.categories << category2
+                item.save
+                item}
 
   before(:each) do
-    item1.categories << category1
-    item2.categories << category2
+    item1
+    item2
     visit items_path
   end
 

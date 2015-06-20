@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   validates :description, presence: true
   validates :price, presence: true,
                     numericality: { greater_than: 0 }
-  # validate :at_least_one_category
+  validate :at_least_one_category
 
   has_many :item_categories, dependent: :destroy
   has_many :categories, through: :item_categories
