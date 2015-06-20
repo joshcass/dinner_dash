@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
 
   has_many :orders
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   def total_items_purchased
     orders.map(&:total_items).reduce(:+)

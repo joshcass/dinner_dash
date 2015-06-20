@@ -1,10 +1,10 @@
   <!-- Right Nav Section -->
   <ul class="center-buttons">
     <li class="divider"></li>
-    <li><%= link_to "SHOP", items_path %></li>
+    <li><%= current_admin? ? link_to("SHOP", admin_items_path) : link_to("SHOP", items_path)%></li>
     <li class="divider"></li>
     <% if logged_in? %>
-      <li><%= link_to "#{current_user.first_name.upcase}", current_user %></li>
+      <li><%= current_admin? ? link_to("#{current_user.first_name.upcase}", admin_user_path(current_user)) : link_to("#{current_user.first_name.upcase}", current_user) %></li>
       <li class="divider"></li>
       <li><%= link_to "LOGOUT", logout_path, method: :delete %></li>
       <li class="divider"></li>

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'user past order views', type: :feature do
-  let(:user) { Fabricate(:user) }
+describe 'users past order views', type: :feature do
+  let(:users) { Fabricate(:users) }
 
   before(:each) do
     ApplicationController.any_instance.stubs(:current_user).returns(user)

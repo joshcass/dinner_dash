@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe 'user login', type: :feature do
-  let(:user) { Fabricate(:user) }
+describe 'users login', type: :feature do
+  let(:users) { Fabricate(:users) }
 
-  it 'existing user can login' do
+  it 'existing users can login' do
     visit root_path
     click_on "LOGIN"
     fill_in "Username", with: user.username

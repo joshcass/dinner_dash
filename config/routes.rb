@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create]
   resources :users, only: [:new, :create, :show]
 
+  namespace :admin do
+    resources :items
+    resources :categories
+    resources :users
+  end
+
   root 'welcome#index'
 
   put '/carts', to: "carts#update"

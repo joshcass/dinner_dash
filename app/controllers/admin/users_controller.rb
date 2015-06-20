@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < Admin::BaseController
   before_action :set_user, except: [:new, :create]
   skip_before_action :current_user?, only: [:new, :create]
 
@@ -18,6 +18,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @item = Item.new
+    @category = Category.new
   end
 
   private
@@ -28,13 +30,13 @@ class UsersController < ApplicationController
 
   def valid_params
     params.require(:users).permit(
-                                  :username,
-                                  :password,
-                                  :password_confirmation,
-                                  :email,
-                                  :first_name,
-                                  :last_name,
-                                  :display_name
+      :username,
+      :password,
+      :password_confirmation,
+      :email,
+      :first_name,
+      :last_name,
+      :display_name
     )
   end
 end

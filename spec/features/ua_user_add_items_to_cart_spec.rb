@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user is able to add items to cart', type: :feature do
+describe 'users is able to add items to cart', type: :feature do
   let(:item1) { item = Fabricate.build(:item)
                 item.categories << category1
                 item.save

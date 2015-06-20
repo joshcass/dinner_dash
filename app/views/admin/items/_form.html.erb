@@ -1,0 +1,63 @@
+<%= form_for [:admin, @item], html: { multipart: true } do |f| %>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :overview %>
+      <%= f.text_area :overview %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :details %>
+      <%= f.text_area :details %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <ul class="inline-list">
+        <% categories.each do |category| %>
+          <li>
+            <%= f.label category.name %>
+            <%= check_box_tag "categories[]", category.id, @item.has_category?(category.id) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label "Retire Item" %>
+      <%= check_box_tag "status[]", 'retired', @item.retired? %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <% if @item.image.exists? %>
+        <%= image_tag @item.image.url, height: "100" %>
+        <%= f.label :image, "Attach a new image" %>
+        <%= f.file_field :image %>
+      <% else %>
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.submit style: "text-transform:uppercase", class: "large button expand" %>
+    </div>
+  </div>
+<% end %>

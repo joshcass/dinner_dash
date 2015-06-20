@@ -58,7 +58,7 @@
 @import 'foundation/functions';
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
-// for compatibility with browser-based text zoom or user-set defaults.
+// for compatibility with browser-based text zoom or users-set defaults.
 
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
@@ -744,10 +744,10 @@ $include-html-global-classes: $include-html-classes;
 // $inline-list-overflow: hidden;
 
 // We use this to control the list items
-// $inline-list-display: block;
+$inline-list-display: inline-block;
 
 // We use this to control any elements within list items
-// $inline-list-children-display: block;
+//$inline-list-children-display: block;
 
 // 14. Joyride
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1496,4 +1496,6 @@ $include-html-global-classes: $include-html-classes;
   text-align: center;
   font-size: 0.9rem;
 }
+
+
 

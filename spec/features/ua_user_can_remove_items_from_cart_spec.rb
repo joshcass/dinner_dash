@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user is able to remove items from cart', type: :feature do
+describe 'users is able to remove items from cart', type: :feature do
   let(:item1) { item = Fabricate.build(:item)
                 item.categories << category1
                 item.save

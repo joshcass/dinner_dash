@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe 'user is able to create a new account', type: :feature do
+describe 'users is able to create a new account', type: :feature do
 
   before(:each) do
     visit root_path
     click_link('SIGNUP')
   end
 
-  it 'takes user to account creation page' do
+  it 'takes users to account creation page' do
 
     expect(page).to have_content("Username")
     expect(page).to have_content("Password")
@@ -19,7 +19,7 @@ describe 'user is able to create a new account', type: :feature do
     expect(page).to have_button("Create User")
   end
 
-  it 'creates a new user' do
+  it 'creates a new users' do
 
     expect(page).to have_button("Create User")
 
@@ -35,7 +35,7 @@ describe 'user is able to create a new account', type: :feature do
     expect(page).to have_content("Welcome to your new Bluer Bottle Coffee account.")
   end
 
-  it 'gives error if user does not enter username' do
+  it 'gives error if users does not enter username' do
 
     expect(page).to have_button("Create User")
 
@@ -50,7 +50,7 @@ describe 'user is able to create a new account', type: :feature do
     expect(page).to have_content("Username can't be blank")
   end
 
-  it 'gives error if user does not enter password' do
+  it 'gives error if users does not enter password' do
   expect(page).to have_button("Create User")
 
     fill_in 'Username', :with => 'JeffC'
@@ -64,7 +64,7 @@ describe 'user is able to create a new account', type: :feature do
     expect(page).to have_content("Password can't be blank")
   end
 
-  it 'gives error if user does not enter password_confirmation' do
+  it 'gives error if users does not enter password_confirmation' do
     expect(page).to have_button("Create User")
 
     fill_in 'Username', :with => 'JeffC'
@@ -78,7 +78,7 @@ describe 'user is able to create a new account', type: :feature do
     expect(page).to have_content("Password confirmation can't be blank")
   end
 
-  it 'gives error if user does not enter first name' do
+  it 'gives error if users does not enter first name' do
     expect(page).to have_button("Create User")
 
     fill_in 'Username', :with => 'JeffC'
@@ -92,7 +92,7 @@ describe 'user is able to create a new account', type: :feature do
     expect(page).to have_content("First name can't be blank")
   end
 
-  it 'gives error if user does not enter last name' do
+  it 'gives error if users does not enter last name' do
     expect(page).to have_button("Create User")
 
     fill_in 'Username', :with => 'JeffC'
@@ -106,7 +106,7 @@ describe 'user is able to create a new account', type: :feature do
     expect(page).to have_content("Last name can't be blank")
   end
 
-  it 'gives error if user does not enter email' do
+  it 'gives error if users does not enter email' do
     expect(page).to have_button("Create User")
 
     fill_in 'Username', :with => 'JeffC'

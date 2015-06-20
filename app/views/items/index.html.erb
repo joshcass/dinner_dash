@@ -2,7 +2,7 @@
 <div>
   <ul class="button-group">
     <li><%= link_to "ALL", items_path, class: "tiny button" %></li>
-    <%= render partial: @categories %>
+    <%= render partial: "/categories/category", collection: categories %>
   </ul>
   <ul class="small-block-grid-2 large-block-grid-4">
     <%= render partial: @items %>
