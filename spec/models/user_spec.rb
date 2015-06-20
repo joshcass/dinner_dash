@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { Fabricate (:user) }
+  let(:users) { Fabricate (:users) }
 
   it 'is valid' do
     expect(user).to be_valid
@@ -39,7 +39,7 @@ RSpec.describe User, type: :model do
 
   #Sad Path Tests
 
-  it 'is invalid with short user name' do
+  it 'is invalid with short users name' do
     user.display_name = 'a'
     expect(user).to_not be_valid
   end

@@ -1,2 +1,2 @@
 <div><%= image_tag("PBB_text_white.png", class: "center_image")%></div>
-<div class="small-6-centered text-center columns"><%= link_to "SHOP COFFEE", items_path, class: "button" %></div>
+<div class="small-6-centered text-center columns"><%= current_admin? ? link_to( "SHOP COFFEE", admin_items_path, class: "button") : link_to("SHOP COFFEE", items_path, class: "button") %></div>

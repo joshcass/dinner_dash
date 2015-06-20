@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user is able to add items to cart', type: :feature do
+describe 'users is able to add items to cart', type: :feature do
   let(:item1) { item = Fabricate.build(:item)
                 item.categories << category1
                 item.save
@@ -22,7 +22,7 @@ describe 'user is able to add items to cart', type: :feature do
     Fabrication.clear_definitions
   end
 
-  it 'allows user to view cart' do
+  it 'allows users to view cart' do
     expect(page).to have_link("cart_link")
 
     click_link("cart_link")

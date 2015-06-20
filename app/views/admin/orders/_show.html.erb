@@ -2,20 +2,23 @@
 <table class="order_table">
   <thead>
   <tr>
-    <th width="150">Item</th>
-    <th>Description</th>
+    <th width="150">Purchaser</th>
     <th>Date</th>
+    <th width="150">Item</th>
     <th width="150">Quantity</th>
     <th width="150">Price</th>
-    <th>Subtotal</th>
+    <th width="150">Subtotal</th>
   </tr>
   </thead>
   <tbody>
   <% order.order_items.each do |order_item| %>
     <tr>
-      <td><%= order_item.item.name %></td>
-      <td><%= order_item.item.description %></td>
-      <td><%= time_tag order_item.created_at, format: "%b %-d, %Y %-l:%M %p"   %></td>
+      <td>
+        <%= order.user.full_name %>
+        <%= order.user.email %>
+      </td>
+      <td><%= time_tag order_item.created_at, format: "%b %-d, %Y %-l:%M %p" %></td>
+      <td><%= link_to order_item.item.name, admin_item_path(order_item.item) %></td>
       <td><%= order_item.quantity %></td>
       <td style="text-align:left"><%= number_to_currency order_item.item.price %></td>
       <td><%= number_to_currency order_item.price_subtotal %></td>

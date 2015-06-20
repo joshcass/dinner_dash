@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def index
-    @categories = Category.all
     @items = Item.active
   end
 

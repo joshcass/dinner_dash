@@ -1,0 +1,14 @@
+<li id="<%= item.name %>" xmlns="http://www.w3.org/1999/html">
+  <%= link_to admin_item_path(item), class: 'index_a' do %>
+    <div class='row'>
+      <%= image_tag item.image.url, class: 'index_img' %>
+    </div>
+    <div class='row'>
+      <%= item.name %>
+      <%= number_to_currency item.price %>
+    </div>
+    <div class='row'>
+      <p class="index_description"><%= item.description %></p>
+    </div>
+  <% end %>
+</li>

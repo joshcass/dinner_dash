@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user is able to view item details', type: :feature do
+describe 'users is able to view item details', type: :feature do
   let(:item1) { item = Fabricate.build(:item)
                 item.categories << category1
                 item.save
@@ -22,7 +22,7 @@ describe 'user is able to view item details', type: :feature do
     Fabrication.clear_definitions
   end
 
-  it 'shows user item details' do
+  it 'shows users item details' do
     click_link('SHOP')
     expect(page).to have_content(item1.name)
     expect(page).to have_content(item1.description)

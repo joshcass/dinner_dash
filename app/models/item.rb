@@ -16,6 +16,21 @@ class Item < ActiveRecord::Base
 
   enum status: %w(active retired)
 
+  def self.new_and_add_categories(params)
+    item = self.new(params)
+
+    if params[:categories]
+      params[:categories].each do |category_id|
+        item.categories << Category.find(category_id)
+      end
+    end
+    item
+  end
+
+  def has_category?(category_id)
+    categories.find_by_id(category_id)
+  end
+
   private
 
   def at_least_one_category

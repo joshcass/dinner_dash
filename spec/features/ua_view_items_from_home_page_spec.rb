@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'unauthorized user view items by item and category', type: :feature do
+describe 'unauthorized users view items by item and category', type: :feature do
   let(:item1) { item = Fabricate.build(:item)
                 item.categories << category1
                 item.save

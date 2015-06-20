@@ -1,11 +1,13 @@
-<% content_for :title do %><%= current_user.first_name %> | Bluer Bottle Coffee<% end %>
+<% content_for :title do %><%=current_user.first_name %> | Bluer Bottle Coffee<% end %>
 <div class="large-7 columns">
   <ul class="tabs" data-tab>
-    <li class="tab-title active"><a href="#order_history">Order History</a></li>
+    <li class="tab-title active"><a href="#orders">All Orders</a></li>
+    <li class="tab-title"><a href="#create_item">Create Item</a></li>
+    <li class="tab-title"><a href="#create_category">Create Category</a></li>
     <li class="tab-title"><a href="#edit_account">Edit Account</a></li>
   </ul>
   <div class="tabs-content">
-    <div class="content active" id="order_history">
+    <div class="content active" id="orders">
       <table id="order_table" class="display" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -16,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        <% current_user.orders.each do |order| %>
+        <% orders.each do |order| %>
           <tr>
             <td class="text-center"><%= order.status %></td>
             <td class="text-center"><%= time_tag order.created_at, format: "%b %-d, %Y %-l:%M %p" %></td>
@@ -24,7 +26,7 @@
             <td class="text-center">
               <a href="#" data-reveal-id="order_<%= order.id %>" class="tiny button">DETAILS</a>
               <div id="order_<%= order.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                <%= render partial: 'orders/show', locals: { order: order } %>
+                <%= render partial: 'admin/orders/show', locals: { order: order } %>
                 <a class="close-reveal-modal" aria-label="Close">&#215;</a>
               </div>
             </td>
@@ -32,6 +34,12 @@
         <% end %>
         </tbody>
       </table>
+    </div>
+    <div class="content" id="create_item">
+      <%= render 'admin/items/form' %>
+    </div>
+    <div class="content" id="create_category">
+      <%= render 'admin/categories/form' %>
     </div>
     <div class="content" id="edit_account">
       <%= render 'form' %>
@@ -51,13 +59,26 @@
     </div>
   </div>
   <div class="row" data-equalizer>
-    <div class="small-6 columns panel text-center" data-equalizer-watch>
-      <h5>Coffees Purchased</h5>
-      <h2 style="color:#01a1dd"><%= current_user.total_items_purchased %></h2>
-    </div>
-    <div class="small-5 columns panel text-center" data-equalizer-watch>
-      <h5>Joined</h5>
-        <h4 style="color:#01a1dd"><%= time_ago_in_words(current_user.created_at) %> ago</h4>
+    <div class="panel text-center" data-equalizer-watch>
+      <h5>Order Totals</h5>
+      <table class="order">
+        <thead>
+          <tr>
+            <th>Ordered</th>
+            <th>Paid</th>
+            <th>Completed</th>
+            <th>Cancelled</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= orders.ordered.count %></td>
+            <td><%= orders.paid.count %></td>
+            <td><%= orders.completed.count %></td>
+            <td><%= orders.cancelled.count %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user is able to update items inside cart', type: :feature do
+describe 'users is able to update items inside cart', type: :feature do
   let(:item1) { item = Fabricate.build(:item)
                 item.categories << category1
                 item.save
@@ -22,7 +22,7 @@ describe 'user is able to update items inside cart', type: :feature do
     Fabrication.clear_definitions
   end
 
-  it 'allows user to update cart quanties' do
+  it 'allows users to update cart quanties' do
     #=====shop=====
     click_link('SHOP')
     expect(page).to have_content(item1.name)

@@ -20,7 +20,7 @@
 $(function(){ $(document).foundation(); });
 
 $(document).ready(function() {
-  $('#history').dataTable( {
+  $('#order_table').dataTable( {
     "order": [[ 1, "desc" ]],
     "columnDefs": [
       {
@@ -28,6 +28,5 @@ $(document).ready(function() {
         "bSortable": false
       }
     ]
-  } );
+  });
 } );
-
