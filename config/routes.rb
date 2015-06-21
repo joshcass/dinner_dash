@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :carts, only: [:create]
   resources :orders, only: [:new, :create]
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :update]
 
   namespace :admin do
     resources :items
     resources :categories
-    resources :users
+    resources :users, only: [:show, :update]
   end
 
   root 'welcome#index'
