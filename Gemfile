@@ -33,6 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'aws-sdk'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
+
+gem 'aasm'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

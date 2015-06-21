@@ -10,8 +10,7 @@ class Admin::UsersController < Admin::BaseController
     if @user.update valid_params
       redirect_to admin_user_path(@user), notice: "Account settings updated."
     else
-      flash.now[:errors] = @user.errors.full_messages.join(", ")
-      redirect_to admin_user_path(@user)
+      redirect_to admin_user_path(@user), alert: @user.errors.full_messages.join(", ")
     end
   end
 

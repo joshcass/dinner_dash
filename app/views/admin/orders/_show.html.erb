@@ -1,4 +1,4 @@
-<h1 style="text-align:center">Order Details</h1>
+<h1 style="text-align:center" xmlns="http://www.w3.org/1999/html">Order Details</h1>
 <table class="order_table">
   <thead>
   <tr>
@@ -25,6 +25,13 @@
     </tr>
   <% end %>
   </tbody>
+  <tfoot>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Total</td>
+  <td><%= number_to_currency order.total_cost %></td>
+  <h4>Status: <%= order.status.capitalize %></h4>
+  </tfoot>
 </table>
-<h3>Total: <%= number_to_currency order.total_cost %></h3>
-<h3>Status: <%= order.status.capitalize %></h3>

@@ -18,7 +18,7 @@
         <tbody>
         <% current_user.orders.each do |order| %>
           <tr>
-            <td class="text-center"><%= order.status %></td>
+            <td class="text-center"><%= order.status.capitalize %></td>
             <td class="text-center"><%= time_tag order.created_at, format: "%b %-d, %Y %-l:%M %p" %></td>
             <td class="text-center"><%= number_to_currency order.total_cost %></td>
             <td class="text-center">

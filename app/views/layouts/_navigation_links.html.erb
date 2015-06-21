@@ -1,19 +1,22 @@
-  <!-- Right Nav Section -->
-  <ul class="center-buttons">
+<!-- Right Nav Section -->
+<ul class="center-buttons">
+  <li class="divider"></li>
+  <li><%= current_admin? ? link_to("SHOP", admin_items_path) : link_to("SHOP", items_path)%></li>
+  <li class="divider"></li>
+  <% if logged_in? %>
+    <li><%= current_admin? ? link_to("#{current_user.first_name.upcase}", admin_user_path(current_user)) : link_to("#{current_user.first_name.upcase}", current_user) %></li>
     <li class="divider"></li>
-    <li><%= current_admin? ? link_to("SHOP", admin_items_path) : link_to("SHOP", items_path)%></li>
+    <li><%= link_to "LOGOUT", logout_path, method: :delete %></li>
     <li class="divider"></li>
-    <% if logged_in? %>
-      <li><%= current_admin? ? link_to("#{current_user.first_name.upcase}", admin_user_path(current_user)) : link_to("#{current_user.first_name.upcase}", current_user) %></li>
-      <li class="divider"></li>
-      <li><%= link_to "LOGOUT", logout_path, method: :delete %></li>
-      <li class="divider"></li>
-    <% else %>
-      <li><%= link_to "LOGIN", login_path %></li>
-      <li class="divider"></li>
-      <li><%= link_to "SIGNUP", new_user_path %></li>
-      <li class="divider"></li>
-    <% end %>
-    <li><%= link_to image_tag("fi-shopping-cart.png", width: '20'), new_order_path, :id => "cart_link" %></li>
+  <% else %>
+    <li><%= link_to "LOGIN", login_path %></li>
     <li class="divider"></li>
-  </ul>
+    <li><%= link_to "SIGNUP", new_user_path %></li>
+    <li class="divider"></li>
+  <% end %>
+  <li><%= link_to new_order_path, :id => "cart_link"  do %>
+      <%= image_tag("fi-shopping-cart.png", width: '20') %>
+      <%= "(#{@cart.total_item_count})" unless @cart.contents.empty? %>
+    <% end %></li>
+  <li class="divider"></li>
+</ul>

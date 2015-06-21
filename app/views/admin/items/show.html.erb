@@ -16,7 +16,7 @@
           <p><strong><%= number_to_currency @item.price %></strong> per 12oz. bag<br>
             shipping included
           </p>
-          <%= form_tag carts_path, method: :post do %>
+          <%= form_tag cart_items_path, method: :post do %>
             <%= label_tag :quantity %>
             <%= select_tag :quantity, options_for_select(0..20), class: "select_tag" %>
             <%= hidden_field_tag :item_id, @item.id %><br>
