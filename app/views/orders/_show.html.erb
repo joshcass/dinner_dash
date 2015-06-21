@@ -2,11 +2,11 @@
 <table class="order_table">
   <thead>
   <tr>
-    <th width="150">Item</th>
+    <th width="200">Item</th>
     <th>Description</th>
     <th>Date</th>
-    <th width="150">Quantity</th>
-    <th width="150">Price</th>
+    <th>Quantity</th>
+    <th>Price</th>
     <th>Subtotal</th>
   </tr>
   </thead>
@@ -22,6 +22,13 @@
     </tr>
   <% end %>
   </tbody>
+  <tfoot>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Total</td>
+  <td><%= number_to_currency order.total_cost %></td>
+  <h4>Status: <%= order.status.capitalize %></h4>
+  </tfoot>
 </table>
-<h3>Total: <%= number_to_currency order.total_cost %></h3>
-<h3>Status: <%= order.status.capitalize %></h3>

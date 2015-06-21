@@ -29,4 +29,8 @@ class Cart
   def remove_all
     contents.clear
   end
+
+  def total_item_count
+    contents.values.reduce(:+)
+  end
 end

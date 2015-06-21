@@ -20,6 +20,15 @@ class UsersController < ApplicationController
   def show
   end
 
+  def update
+    if @user.update valid_params
+      redirect_to @user, notice: "Account settings updated."
+    else
+      flash.now[:errors] = @user.errors.full_messages.join(", ")
+      render :show
+    end
+  end
+
   private
 
   def set_user
@@ -27,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def valid_params
-    params.require(:users).permit(
+    params.require(:user).permit(
                                   :username,
                                   :password,
                                   :password_confirmation,

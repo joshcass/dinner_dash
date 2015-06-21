@@ -6,6 +6,7 @@
     <th class="text-center">Description</th>
     <th class="text-center" width="150">Quantity</th>
     <th class="text-center" width="150">Price</th>
+    <th class="text-center" width="150">Item Subtotal</th>
     <th class="text-center" width="50">Remove Item</th>
   </tr>
   </thead>
@@ -15,16 +16,25 @@
       <td class="text-center"><%= order_item.item.name %></td>
       <td class="text-center"><%= order_item.item.description %></td>
       <td class="text-center" id="update_quantity">
-        <%= form_tag carts_path, method: :put do %>
+        <%= form_tag cart_items_path, method: :put do %>
           <%= select_tag :quantity, options_for_select(quantity_range(order_item), order_item.quantity), class: 'select_tag' %>
           <%= hidden_field_tag :item_id, order_item.item.id %>
           <%= submit_tag "UPDATE", class: "tiny button" %>
         <% end %>
       </td>
       <td class="text-center"><%= number_to_currency order_item.item.price %></td>
-      <td class="text-center"><strong><%= link_to "X", carts_path(item_id: order_item.item.id), method: :delete %></strong></td>
+      <td class="text-center"><%= number_to_currency order_item.price_subtotal %></td>
+      <td class="text-center"><strong><%= link_to "X", cart_items_path(item_id: order_item.item.id), method: :delete %></strong></td>
     </tr>
   <% end %>
+  <tfoot>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Order Total</td>
+    <td><%= number_to_currency @order.total_cost %></td>
+  </tfoot>
   </table>
 <ul class="inline-list">
   <li><%= link_to "Continue Shopping", items_path %></li>

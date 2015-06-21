@@ -1,4 +1,4 @@
-class CartsController < ApplicationController
+class CartItemsController < ApplicationController
   include ActionView::Helpers::TextHelper
   before_action :set_item
   skip_before_action :current_user?
@@ -24,6 +24,7 @@ class CartsController < ApplicationController
   end
 
   private
+
   def set_item
     @item = Item.find(params[:item_id])
   end
