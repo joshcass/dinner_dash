@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  skip_before_action :current_user?, only: [:index, :show]
+  skip_before_action :require_user, only: [:index, :show]
   before_action :set_item, only: [:show]
 
   def index
