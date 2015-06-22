@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'users login', type: :feature do
-  let(:users) { Fabricate(:users) }
+  let(:user) { Fabricate(:user) }
 
   it 'existing users can login' do
     visit root_path

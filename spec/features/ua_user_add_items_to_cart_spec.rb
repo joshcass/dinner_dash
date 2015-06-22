@@ -11,6 +11,7 @@ describe 'users is able to add items to cart', type: :feature do
                 item}
   let(:category1) { Fabricate(:category) }
   let(:category2) { Fabricate(:category) }
+  let(:user) { Fabricate(:user) }
 
   before(:each) do
     item1.categories << category1
@@ -39,7 +40,24 @@ describe 'users is able to add items to cart', type: :feature do
     click_button('ADD TO CART', :match => :first)
 
     expect(page).to have_content("You now have 2")
-
   end
 
+  it 'wont lose items after logging in' do
+    click_link('SHOP')
+    first(:link, item1.name).click
+
+    find('#quantity', :match => :first).find(:xpath, 'option[2]').select_option
+    click_button('ADD TO CART', :match => :first)
+
+    click_link("cart_link")
+    click_button('CHECKOUT')
+    expect(page).to have_content("Login or Sign up!")
+
+    fill_in "Username", with: user.username
+    fill_in "Password", with: "password"
+    click_button "LOGIN"
+    expect(page).to have_content(item1.name)
+    expect(page).to have_content(item1.description)
+    click_button('CHECKOUT')
+  end
 end

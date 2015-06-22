@@ -32,7 +32,7 @@ class Admin::ItemsController < Admin::BaseController
   private
 
   def valid_params
-    params.require(:item).permit(:name, :description, :price, :overview, :details, :categories, :image, :status)
+    params.require(:item).permit(:name, :description, :price, :overview, :details, :image, :status, { :categories => [] })
   end
 
   def set_item

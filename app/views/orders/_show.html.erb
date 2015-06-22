@@ -13,7 +13,7 @@
   <tbody>
   <% order.order_items.each do |order_item| %>
     <tr>
-      <td><%= order_item.item.name %></td>
+      <td><%=link_to order_item.item.name, item_path(order_item.item.id) %></td>
       <td><%= order_item.item.description %></td>
       <td><%= time_tag order_item.created_at, format: "%b %-d, %Y %-l:%M %p"   %></td>
       <td><%= order_item.quantity %></td>
@@ -29,6 +29,6 @@
   <td></td>
   <td>Total</td>
   <td><%= number_to_currency order.total_cost %></td>
-  <h4>Status: <%= order.status.capitalize %></h4>
+  <h4 style="text-align:center">Status: <%= order.status.capitalize %></h4>
   </tfoot>
 </table>

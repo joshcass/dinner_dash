@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  let(:users) { Fabricate(:users) }
+  let(:user) { Fabricate(:user) }
   let(:item) { item = Fabricate.build(:item)
                item.categories << category
                item.save
@@ -23,6 +23,6 @@ RSpec.describe Order, type: :model do
   end
 
   it 'is associated with a users' do
-    expect(order).to respond_to(:users)
+    expect(order).to respond_to(:user)
   end
 end
