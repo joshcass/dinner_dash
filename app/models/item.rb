@@ -17,7 +17,7 @@ class Item < ActiveRecord::Base
   enum status: %w(active retired)
 
   def self.new_and_add_categories(params)
-    category_ids= params.delete(:category_ids)
+    category_ids = params.delete(:category_ids)
     item = self.new(params)
 
     if category_ids
