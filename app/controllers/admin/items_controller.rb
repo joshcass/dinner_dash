@@ -8,12 +8,10 @@ class Admin::ItemsController < Admin::BaseController
 
   def create
     @item = Item.new_and_add_categories(valid_params)
-
     if @item.save
       redirect_to admin_user_path(current_user), notice: "Item Created"
     else
-      flash.now[:errors] = @item.errors.full_messages.join(", ")
-      render 'admin/users/show'
+      redirect_to admin_user_path(current_user), alert: @item.errors.full_messages.join(", ")
     end
   end
 
@@ -21,6 +19,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def update
+    @item.update_categories(valid_params.delete(:category_ids))
     if @item.update(valid_params)
       redirect_to admin_user_path(current_user), notice: "Item Updated"
     else
@@ -32,7 +31,7 @@ class Admin::ItemsController < Admin::BaseController
   private
 
   def valid_params
-    params.require(:item).permit(:name, :description, :price, :overview, :details, :image, :status, { :categories => [] })
+    params.require(:item).permit(:name, :description, :price, :overview, :details, :image, :status, :category_ids => [])
   end
 
   def set_item
