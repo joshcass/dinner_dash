@@ -1,15 +1,16 @@
 require 'rails_helper'
 
 describe 'users logout', type: :feature do
-  let(:users) { User.create(username: "Tom", password: "password") }
+  let(:user) { Fabricate(:user) }
 
-  xit 'existing users can logout' do
-    visit login_path
-    fill_in "Username", with: "Tom"
+  it 'existing users can logout' do
+    visit root_path
+    click_link "LOGIN"
+    fill_in "Username", with: user.username
     fill_in "Password", with: "password"
-    click_button "Login"
-    click_button "Logout"
+    click_button "LOGIN"
+    click_link "LOGOUT"
 
-    expect(current_path).to eq(login_path)
+    expect(current_path).to eq(root_path)
   end
 end
