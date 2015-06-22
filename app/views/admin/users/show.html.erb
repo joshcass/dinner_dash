@@ -65,26 +65,30 @@
   </div>
   <div class="row" data-equalizer>
     <div class="panel text-center" data-equalizer-watch>
-      <h5>Order Totals</h5>
-      <table class="order_table">
-        <thead>
-          <tr>
-            <th>Ordered</th>
-            <th>Paid</th>
-            <th>Completed</th>
-            <th>Cancelled</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= orders.ordered.count %></td>
-            <td><%= orders.paid.count %></td>
-            <td><%= orders.completed.count %></td>
-            <td><%= orders.cancelled.count %></td>
-          </tr>
-        </tbody>
-      </table>
+      <h4>Order Status Totals</h4>
+      <div id="piechart" style="width: 450px; height: 400px;"></div>
     </div>
   </div>
 </div>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
 
+    var data = google.visualization.arrayToDataTable([
+      ['Status', 'Total'],
+      ['Ordered', <%= orders.ordered.count %>],
+      ['Paid', <%= orders.paid.count %>],
+      ['Completed', <%= orders.completed.count %>],
+      ['Cancelled', <%= orders.cancelled.count %>]
+    ]);
+
+    var options = {
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }
+</script>
