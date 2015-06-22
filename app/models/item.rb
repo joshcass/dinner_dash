@@ -20,15 +20,11 @@ class Item < ActiveRecord::Base
     item = self.new(params)
 
     if params[:categories]
-      self.add_categories(params)
+      params[:categories].each do |category_id|
+        item.categories << Category.find(category_id)
+      end
     end
     item
-  end
-
-  def add_categories(params)
-    params[:categories].each do |category_id|
-      self.categories << Category.find(category_id)
-    end
   end
 
   def has_category?(category_id)
