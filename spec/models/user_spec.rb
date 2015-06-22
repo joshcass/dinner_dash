@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:users) { Fabricate (:users) }
+  let(:user) { Fabricate (:user) }
 
   it 'is valid' do
     expect(user).to be_valid
