@@ -39,7 +39,7 @@ describe 'users is able to update items inside cart', type: :feature do
     click_link("cart_link")
 
     expect(page).to have_content("Item")
-    expect(page).to have_content("Remove Item")
+    expect(page).to have_css("#remove_items")
 
     #======update quantities=====
     within_table("cart_table") do
