@@ -7,14 +7,20 @@ describe 'admin', type: :feature do
                             last_name: 'Bieber', email: 'asdf@gmail.com',
                             role: 1) }
   let(:category) { Fabricate(:category) }
+  let(:category2) { Fabricate(:category) }
   let(:item) { item = Fabricate.build(:item)
                item.categories << category
                item.save
                item }
 
+  after(:each) do
+    Fabrication.clear_definitions
+  end
+
   before(:each) do
     item
     category
+    category2
     visit root_path
     click_link 'LOGIN'
     fill_in 'Username', with: admin.username
@@ -35,7 +41,7 @@ describe 'admin', type: :feature do
       fill_in 'Price', with: '9'
       fill_in 'Overview', with: '123'
       fill_in 'Details', with: 'lol'
-      find(:css, "#item_category_ids_[value='2']").set(true)
+      find(:css, "#item_category_ids_[value='3']").set(true)
       click_button 'Create Item'
     end
     click_link 'SHOP'
@@ -68,4 +74,24 @@ describe 'admin', type: :feature do
     click_link 'SHOP'
     expect(page).to_not have_content(item.name)
   end
+
+  it 'admin can edit/modify items and reassign categories' do
+    click_link 'SHOP'
+    click_link item.name
+    click_link 'Edit Item'
+    within('#edit') do
+      fill_in 'Name', with: 'new name'
+      fill_in 'Description', with: 'new description'
+      find(:css, "#item_category_ids_[value='11']").set(true)
+      click_button 'Update Item'
+    end
+    click_link 'SHOP'
+    expect(page).to_not have_content(item.name)
+    expect(page).to have_content('new name')
+    expect(page).to have_content('new description')
+    click_link category2.name
+    expect(page).to have_content('new name')
+    expect(page).to have_content('new description')
+  end
+
 end
