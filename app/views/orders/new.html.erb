@@ -24,7 +24,7 @@
       </td>
       <td class="text-center"><%= number_to_currency order_item.item.price %></td>
       <td class="text-center"><%= number_to_currency order_item.price_subtotal %></td>
-      <td class="text-center"><%= link_to "X", cart_items_path(item_id: order_item.item.id), method: :delete, style: "font-weight:900" %></td>
+      <td class="text-center" id="remove_items"><%= link_to "X", cart_items_path(item_id: order_item.item.id), method: :delete, style: "font-weight:900" %></td>
     </tr>
   <% end %>
   <tfoot>
