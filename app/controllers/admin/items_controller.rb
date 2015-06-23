@@ -3,7 +3,7 @@ class Admin::ItemsController < Admin::BaseController
   before_action :set_item, only: [:show, :update]
 
   def index
-    @items = Item.active
+    @items = Item.all
   end
 
   def create
