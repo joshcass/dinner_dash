@@ -21,7 +21,7 @@ class Admin::ItemsController < Admin::BaseController
   def update
     @item.update_categories(valid_params.delete(:category_ids))
     if @item.update(valid_params)
-      redirect_to admin_user_path(current_user), notice: "Item Updated"
+      redirect_to admin_item_path(@item), notice: "Item Updated"
     else
       flash.now[:errors] = @item.errors.full_messages.join(", ")
       redirect_to admin_item_path(@item)
