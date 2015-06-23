@@ -20,6 +20,48 @@
 $(function(){ $(document).foundation(); });
 
 $(document).ready(function() {
+  var oTable = $('#admin_order_table').dataTable( {
+    "order": [[ 1, "desc" ]],
+    "columnDefs": [
+      {
+        "targets": [ 1, 4 ],
+        "bSortable": false
+      }
+    ]
+  });
+
+  $('#all').click(function(){
+    oTable.fnFilter( '', 0);
+    $('dd').removeClass('active');
+    $('#all').addClass('active');
+  });
+
+  $('#ordered').click(function(){
+    oTable.fnFilter( 'ordered', 0);
+    $('dd').removeClass('active');
+    $('#ordered').addClass('active');
+  });
+
+  $('#paid').click(function(){
+    oTable.fnFilter( 'paid', 0);
+    $('dd').removeClass('active');
+    $('#paid').addClass('active');
+  });
+
+  $('#completed').click(function(){
+    oTable.fnFilter( 'completed', 0);
+    $('dd').removeClass('active');
+    $('#completed').addClass('active');
+  });
+
+  $('#cancelled').click(function(){
+    oTable.fnFilter( 'cancelled', 0);
+    $('dd').removeClass('active');
+    $('#cancelled').addClass('active');
+  });
+});
+
+$(document).ready(function() {
   $('#order_table').dataTable( {
     "order": [[ 1, "desc" ]],
     "columnDefs": [
@@ -29,4 +71,5 @@ $(document).ready(function() {
       }
     ]
   });
-} );
+});
+

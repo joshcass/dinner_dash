@@ -54,6 +54,10 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def status_locked?
+    completed? || cancelled?
+  end
+
   private
 
   def at_least_one_item
