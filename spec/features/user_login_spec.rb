@@ -1,6 +1,10 @@
 require 'rails_helper'
 
+<<<<<<< HEAD
 describe 'user login', type: :feature do
+=======
+describe 'users login', type: :feature do
+>>>>>>> master
   let(:user) { Fabricate(:user) }
 
   it 'existing users can login' do

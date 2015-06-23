@@ -22,7 +22,6 @@ describe 'users is able to remove items from cart', type: :feature do
     Fabrication.clear_definitions
   end
 
-  #==== Add Items to Cart =====
   it 'removes items from cart' do
     click_link('SHOP')
 

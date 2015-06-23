@@ -22,7 +22,7 @@ describe 'users is able to update items inside cart', type: :feature do
     Fabrication.clear_definitions
   end
 
-  it 'allows users to update cart quanties' do
+  it 'allows users to update cart quantities' do
     #=====shop=====
     click_link('SHOP')
     expect(page).to have_content(item1.name)
