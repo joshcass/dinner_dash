@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'us users can browse items', type: :feature do
+describe 'ua users can browse items', type: :feature do
   let(:category1) { Fabricate(:category) }
   let(:category2) { Fabricate(:category) }
   let(:item1) { item = Fabricate.build(:item)
