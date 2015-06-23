@@ -30,7 +30,7 @@ gem 'paperclip','~> 4.2'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'aws-sdk'
+gem 'aws-sdk','<2.0'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
