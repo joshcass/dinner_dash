@@ -1,26 +1,26 @@
 <% content_for :title do %>Sign In | Bluer Bottle Coffee<% end %>
-<%= form_for :session, url: login_path do |f| %>
-  <div class="row">
-    <div class="large-4 columns">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-4 columns">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-4 columns">
-      <%= f.submit "LOGIN", class: "large button expand" %>
-    </div>
-  </div>
-<% end %>
+    <%= form_for :session, url: login_path do |f| %>
+      <div class="row">
+        <div class="large-4 large-centered columns">
+          <%= f.label :username %>
+          <%= f.text_field :username %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-4 large-centered columns">
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-4 large-centered columns">
+          <%= f.submit "LOGIN", class: "large button expand" %>
+        </div>
+      </div>
+    <% end %>
 
-<div class="row">
-  <div class="large-4 columns">
-    <%= link_to "No Account? Sign up!", new_user_path %>
-  </div>
-</div>
+    <div class="row">
+      <div class="large-4 large-centered columns">
+        <%= link_to "No Account? Sign up!", new_user_path %>
+      </div>
+    </div>

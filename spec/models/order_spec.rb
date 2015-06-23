@@ -22,7 +22,11 @@ RSpec.describe Order, type: :model do
     expect(order).to_not be_valid
   end
 
+<<<<<<< HEAD
+  it 'is associated with a user' do
+=======
   it 'is associated with a users' do
+>>>>>>> master
     expect(order).to respond_to(:user)
   end
 end

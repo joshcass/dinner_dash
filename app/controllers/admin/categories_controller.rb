@@ -1,5 +1,5 @@
 class Admin::CategoriesController < Admin::BaseController
-  skip_before_action :current_user?, only: [:show]
+  skip_before_action :require_user, only: [:show]
 
   def create
     @category = Category.new(valid_params)

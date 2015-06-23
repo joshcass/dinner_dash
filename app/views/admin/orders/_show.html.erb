@@ -2,8 +2,7 @@
 <table class="order_table">
   <thead>
   <tr>
-    <th width="150" class="text-center">Purchaser</th>
-    <th>Date</th>
+    <th>Date Ordered</th>
     <th width="150" class="text-center">Item</th>
     <th width="150" class="text-center">Quantity</th>
     <th width="150" class="text-center">Price</th>
@@ -13,10 +12,6 @@
   <tbody>
   <% order.order_items.each do |order_item| %>
     <tr>
-      <td>
-        <p style="font-weight:500; margin-bottom:1px"><%= order.user.full_name %></p>
-        <p style="font-size:0.8rem; margin-top:1px"><%= order.user.email %></p>
-      </td>
       <td class="text-center"><%= time_tag order_item.created_at, format: "%b %-d, %Y %-l:%M %p" %></td>
       <td class="text-center"><%= link_to order_item.item.name, admin_item_path(order_item.item) %></td>
       <td class="text-center"><%= order_item.quantity %></td>
@@ -29,9 +24,11 @@
   <td></td>
   <td></td>
   <td></td>
-  <td></td>
   <td class="text-center">Total</td>
   <td class="text-center"><%= number_to_currency order.total_cost %></td>
+  <h4 style="margin-bottom:1px">Purchaser:</h4>
+  <p style="font-weight:500; margin-bottom:1px"><%= order.user.full_name %></p>
+  <p style="font-size:0.8rem; margin-top:1px"><%= order.user.email %></p>
   <h4>Status: <%= order.status.capitalize %></h4>
   </tfoot>
 </table>

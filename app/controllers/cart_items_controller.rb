@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
   include ActionView::Helpers::TextHelper
   before_action :set_item
-  skip_before_action :current_user?
+  skip_before_action :require_user
 
   def create
     @cart.add_item(@item.id, params[:quantity])

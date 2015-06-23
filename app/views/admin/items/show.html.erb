@@ -6,7 +6,11 @@
   <div class="content active" id="item">
     <div class="row">
       <div class="large-6 columns">
-        <%= image_tag @item.image.url %>
+        <% if @item.active? %>
+          <%= image_tag @item.image.url %>
+        <% else %>
+          <%= image_tag 'item_unavailable.jpg' %>
+        <% end %>
       </div>
       <div class="large-6 columns">
         <div class="small-8 columns">
@@ -16,11 +20,15 @@
           <p><strong><%= number_to_currency @item.price %></strong> per 12oz. bag<br>
             shipping included
           </p>
-          <%= form_tag cart_items_path, method: :post do %>
-            <%= label_tag :quantity %>
-            <%= select_tag :quantity, options_for_select(0..20), class: "select_tag" %>
-            <%= hidden_field_tag :item_id, @item.id %><br>
-            <%= submit_tag "ADD TO CART", class: "small button" %>
+          <% if @item.retired? %>
+            <h4><i>Item Unavailable :(</i></h4>
+          <% else %>
+            <%= form_tag cart_items_path, method: :post do %>
+              <%= label_tag :quantity %>
+              <%= select_tag :quantity, options_for_select(0..20), class: "select_tag" %>
+              <%= hidden_field_tag :item_id, @item.id %><br>
+              <%= submit_tag "ADD TO CART", class: "small button" %>
+            <% end %>
           <% end %>
         </div>
       </div>
