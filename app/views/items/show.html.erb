@@ -12,7 +12,7 @@
       </p>
       <% if @item.retired? %>
         <h4><i>Item Unavailable :(</i></h4>
-        <% else %>
+      <% else %>
         <%= form_tag cart_items_path, method: :post do %>
           <%= label_tag :quantity %>
           <%= select_tag :quantity, options_for_select(0..20), class: "select_tag" %>

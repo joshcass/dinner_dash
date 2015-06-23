@@ -34,17 +34,17 @@ describe 'users past order views', type: :feature do
     end
   end
 
-  xit 'shows past order details' do
+  it 'shows past order details' do
     order = user.orders.first
     page.find("[data-reveal-id='order_#{order.id}']").click
     expect(page).to have_content('Order Details')
     expect(page).to have_content(order.status.capitalize)
     expect(page).to have_content(order.total_cost)
-    expect(page).to have_content(order.items.first.name)
+    expect(page).to have_content(item.name)
+    item.update(status: 1)
 
     click_link(item.name)
     expect(page).to have_content(item.description)
-    click_button 'ADD TO CART'
-    expect(page).to have_content('Item is unavailable')
+    expect(page).to have_content('Item Unavailable :(')
   end
 end
