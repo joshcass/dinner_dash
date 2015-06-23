@@ -20,7 +20,7 @@
             <%= label_tag :quantity %>
             <%= select_tag :quantity, options_for_select(0..20), class: "select_tag" %>
             <%= hidden_field_tag :item_id, @item.id %><br>
-            <%= submit_tag "ADD TO CART", class: "tiny button" %>
+            <%= submit_tag "ADD TO CART", class: "small button" %>
           <% end %>
         </div>
       </div>
