@@ -38,6 +38,10 @@ gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'aasm'
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+gem 'simplecov', :require => false, :group => :test
+
+gem 'simplecov-rcov'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
