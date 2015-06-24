@@ -36,6 +36,8 @@ gem 'aws-sdk','<2.0'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
 gem 'aasm'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -45,7 +47,6 @@ gem 'aasm'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
