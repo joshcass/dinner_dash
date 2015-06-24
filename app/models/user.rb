@@ -28,6 +28,6 @@ class User < ActiveRecord::Base
   end
 
   def format_phone
-    self.phone = '+1' + self.phone.gsub(/[^0-9]/, '') unless self.phone.nil? || self.phone.empty?
+    self.phone = self.phone.gsub(/[^0-9]/, '') unless self.phone.nil? || self.phone.empty?
   end
 end
