@@ -22,6 +22,7 @@ gem 'puma'
 gem 'skylight'
 
 gem 'sass-rails'
+
 gem 'uglifier'
 
 gem 'foundation-rails'
