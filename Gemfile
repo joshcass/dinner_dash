@@ -42,6 +42,10 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'simplecov', :require => false, :group => :test
 
 gem 'simplecov-rcov'
+
+gem 'twilio-ruby'
+
+gem 'phony_rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

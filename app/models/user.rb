@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  before_validation :format_phone
   validates :username, presence: true,
                        uniqueness: true
   validates :email, presence: true,
@@ -12,6 +13,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true,
                        confirmation: true
   validates :password_confirmation, presence: true
+  validates :phone, format: { with: /[0-9\-\+]{9,15}/, message: "Phone number invalid." },
+                    allow_blank: true
   enum role: %w(default admin)
 
   has_many :orders
@@ -22,5 +25,9 @@ class User < ActiveRecord::Base
 
   def total_items_purchased
     orders.map(&:total_items).reduce(:+)
+  end
+
+  def format_phone
+    self.phone = self.phone.gsub(/[^0-9]/, '') unless self.phone.nil? || self.phone.empty?
   end
 end
