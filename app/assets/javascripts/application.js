@@ -73,3 +73,8 @@ $(document).ready(function() {
   });
 });
 
+$(document).ready(function() {
+  $('#charge_window').dataTable( {
+  });
+});
+

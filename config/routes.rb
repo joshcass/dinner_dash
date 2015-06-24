@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create]
   resources :orders, only: [:new, :create]
   resources :users, only: [:new, :create, :show, :update]
+  resources :charges
 
   namespace :admin do
     resources :items
