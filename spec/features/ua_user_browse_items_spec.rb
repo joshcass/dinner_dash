@@ -12,15 +12,16 @@ describe 'ua users can browse items', type: :feature do
                 item.save
                 item}
 
+  after(:each) do
+    Fabrication.clear_definitions
+  end
+  
   before(:each) do
     item1
     item2
     visit items_path
   end
 
-  after(:each) do
-    Fabrication.clear_definitions
-  end
 
   it 'shows items on page' do
     expect(page).to have_content(item1.name)
