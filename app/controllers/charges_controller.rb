@@ -19,7 +19,7 @@ class ChargesController < ApplicationController
       )
 
       @order.pay!
-      NotificationMessage.new.order_status_update(@order.user.full_name, @order.user.phone, @order.status)
+      NotificationMessage.new.order_status_update(@order.user.full_name, @order.user.phone, @order.status) if @order.user.phone?
       redirect_to user_path(current_user), notice: "Thanks for the payment!"
     end
 

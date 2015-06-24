@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     @order.user_id = session[:user_id]
 
     if @order.save
-      NotificationMessage.new.order(current_user.full_name, current_user.phone, @order.total_cost)
+      NotificationMessage.new.order(current_user.full_name, current_user.phone, @order.total_cost) if current_user.phone?
       @cart.remove_all
       current_admin? ? redirect_to(admin_user_path(@order.user, notice: "Order Completed!")) : redirect_to(@order.user, notice: "Order Completed!")
     else

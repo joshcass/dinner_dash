@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true,
                        confirmation: true
   validates :password_confirmation, presence: true
-  validates :phone, phony_plausible: true
+  validates :phone, format: { with: /[0-9\-\+]{9,15}/, message: "Phone number invalid." },
+                    allow_blank: true
   enum role: %w(default admin)
 
   has_many :orders
@@ -27,6 +28,6 @@ class User < ActiveRecord::Base
   end
 
   def format_phone
-    self.phone = '+1' + self.phone.gsub(/[^0-9]/, '')
+    self.phone = '+1' + self.phone.gsub(/[^0-9]/, '') unless self.phone.nil? || self.phone.empty?
   end
 end
