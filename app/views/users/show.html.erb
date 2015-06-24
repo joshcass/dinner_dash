@@ -25,8 +25,10 @@
                   <%= hidden_field_tag :order_id, order.id %>
                   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                          data-description="A month's subscription"
-                          data-amount="<%= order.total_cost * 100 %>"></script>
+                          data-description="Bluer Bottle Coffee Order"
+                          data-amount="<%= order.total_cost * 100 %>"
+                          data-email="<%= current_user.email %>">
+                  </script>
                 <% end %>
               <% end %>
               <p style="font-size:0.9rem; margin-top:1px"><%= time_tag order.updated_at, format: "%b %-d, %Y %-l:%M %p" if order.status_locked? %></p>
