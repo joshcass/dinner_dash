@@ -21,7 +21,7 @@ $(function(){ $(document).foundation(); });
 
 $(document).ready(function() {
   var oTable = $('#admin_order_table').dataTable( {
-    "order": [[ 1, "desc" ]],
+    "order": [[ 2, "desc" ]],
     "columnDefs": [
       {
         "targets": [ 1, 4 ],
