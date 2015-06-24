@@ -12,9 +12,12 @@ class Item < ActiveRecord::Base
   has_many :orders, through: :order_items
 
   has_attached_file :image, default_url: 'missing_image.jpg'
-  validates_attachment_content_type :image, content_type: ['image/jpg', 'image/jpeg', 'image/png']
+  validates_attachment :image, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] },
+                               size: { in: 0..4.megabytes }
 
   enum status: %w(active retired)
+
+  default_scope { order updated_at: :desc }
 
   def self.new_and_add_categories(params)
     category_ids = params.delete(:category_ids)

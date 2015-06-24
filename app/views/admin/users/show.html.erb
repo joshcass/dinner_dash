@@ -8,10 +8,19 @@
   </ul>
   <div class="tabs-content">
     <div class="content active" id="orders">
-      <table id="order_table" class="display" cellspacing="0" width="100%">
+      <dl class="sub-nav">
+        <dt>Filter:</dt>
+        <dd id="all"><a href="#">All</a></dd>
+        <dd id="ordered"><a href="#">Ordered</a></dd>
+        <dd id="paid"><a href="#">Paid</a></dd>
+        <dd id="completed"><a href="#">Completed</a></dd>
+        <dd id="cancelled"><a href="#">Cancelled</a></dd>
+      </dl>
+      <table id="admin_order_table" class="display" cellspacing="0" width="100%">
         <thead>
         <tr>
           <th width="100" class="text-center">Status</th>
+          <th width="100" class="text-center">Update Status</th>
           <th width="150" class="text-center">Date Ordered</th>
           <th width="100" class="text-center">Total</th>
           <th width="150"></th>
@@ -20,8 +29,8 @@
         <tbody>
         <% orders.each do |order| %>
           <tr>
+            <td class="text-center"><%= order.status.capitalize %></td>
             <td class="text-center">
-              <%= order.status.capitalize %>
               <%= link_to "MARK AS PAID", admin_order_path(order, order: {status: 'pay'}), class: 'tiny button', method: 'put' if order.may_pay? %>
               <%= link_to "MARK AS COMPLETED", admin_order_path(order, order: {status: 'complete'}), class: 'tiny button', method: 'put' if order.may_complete? %>
               <%= link_to "CANCEL", admin_order_path(order, order: {status: 'cancel'}), class: 'tiny button', method: 'put' if order.may_cancel? %>
@@ -29,7 +38,7 @@
             <td class="text-center"><%= time_tag order.created_at, format: "%b %-d, %Y %-l:%M %p" %></td>
             <td class="text-center"><%= number_to_currency order.total_cost %></td>
             <td class="text-center">
-              <a href="#" data-reveal-id="order_<%= order.id %>" class="tiny button">DETAILS</a>
+              <a href="#" data-reveal-id="order_<%= order.id %>" class="small button">DETAILS</a>
               <div id="order_<%= order.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
                 <%= render partial: 'admin/orders/show', locals: { order: order } %>
                 <a class="close-reveal-modal" aria-label="Close">&#215;</a>
@@ -54,9 +63,8 @@
 <div class="large-5 columns">
   <div class="row" data-equalizer>
     <div class="small-6 columns panel" data-equalizer-watch>
-      <h3><%= current_user.first_name %>
-        <%= current_user.last_name %></h3>
-      <p style="color:#01a1dd"><%= current_user.email %></p>
+      <h3><%= current_user.full_name %></h3>
+      <p style="color:#01a1dd; font-size:0.9rem"><%= current_user.email %></p>
     </div>
     <div class="small-5 columns panel text-center" data-equalizer-watch>
       <h4>Display Name</h4>

@@ -1,9 +1,9 @@
 class Admin::ItemsController < Admin::BaseController
-  skip_before_action :current_user?, only: [:index, :show]
+  skip_before_action :require_user, only: [:index, :show]
   before_action :set_item, only: [:show, :update]
 
   def index
-    @items = Item.active
+    @items = Item.all
   end
 
   def create
@@ -21,7 +21,7 @@ class Admin::ItemsController < Admin::BaseController
   def update
     @item.update_categories(valid_params.delete(:category_ids))
     if @item.update(valid_params)
-      redirect_to admin_user_path(current_user), notice: "Item Updated"
+      redirect_to admin_item_path(@item), notice: "Item Updated"
     else
       flash.now[:errors] = @item.errors.full_messages.join(", ")
       redirect_to admin_item_path(@item)
@@ -31,7 +31,7 @@ class Admin::ItemsController < Admin::BaseController
   private
 
   def valid_params
-    params.require(:item).permit(:name, :description, :price, :overview, :details, :image, :status, :category_ids => [])
+    params.require(:item).permit(:name, :description, :price, :overview, :details, :status, :image, :category_ids => [])
   end
 
   def set_item

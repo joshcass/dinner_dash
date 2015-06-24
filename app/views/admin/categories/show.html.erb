@@ -1,7 +1,7 @@
 <% content_for :title do %><%= @category.name %> | Bluer Bottle Coffee<% end %>
 <div>
   <ul class="button-group even-12">
-    <li><%= link_to "ALL", items_path, class: "tiny button" %></li>
+    <li><%= link_to "ALL", items_path, class: "small button" %></li>
     <%= render partial: "category", collection: categories %>
   </ul>
   <ul class="small-block-grid-2 large-block-grid-4">

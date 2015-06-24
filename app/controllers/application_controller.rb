@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :load_cart, :current_user?
+  before_action :load_cart, :require_user
   helper_method :logged_in?, :current_user, :cart_empty?, :current_admin?
 
   def load_cart
     @cart = Cart.new(session[:cart])
   end
 
-  def current_user?
+  def require_user
     redirect_to login_path, notice: "Login or Sign up!" unless logged_in?
   end
 

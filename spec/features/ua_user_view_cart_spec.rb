@@ -27,6 +27,6 @@ describe 'users is able to add items to cart', type: :feature do
 
     click_link("cart_link")
     expect(page).to have_content("Item")
-    expect(page).to have_content("Remove Item")
+    expect(page).to have_content("Item Subtotal")
   end
 end
