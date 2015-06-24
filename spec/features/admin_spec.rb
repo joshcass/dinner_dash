@@ -41,7 +41,7 @@ describe 'admin', type: :feature do
       fill_in 'Price', with: '9'
       fill_in 'Overview', with: '123'
       fill_in 'Details', with: 'lol'
-      find(:css, "#item_category_ids_[value='3']").set(true)
+      find(:css, "#item_category_ids_[value='#{category.id}']").set(true)
       click_button 'Create Item'
     end
     click_link 'SHOP'
@@ -49,6 +49,24 @@ describe 'admin', type: :feature do
     expect(page).to have_content('coffee')
     expect(page).to have_content('asdf')
     expect(page).to have_content('9')
+  end
+
+  it 'admin gets error for missing create item field' do
+    click_link 'JUSTIN'
+    click_link 'Create Item'
+    within('#create_item') do
+      fill_in 'Name', with: ''
+      fill_in 'Description', with: ''
+      fill_in 'Price', with: ''
+      fill_in 'Overview', with: ''
+      fill_in 'Details', with: ''
+      find(:css, "#item_category_ids_[value='#{category.id}']").set(true)
+      click_button 'Create Item'
+    end
+    expect(current_path).to eq admin_user_path(admin)
+    expect(page).to have_content('Name can\'t be blank')
+    expect(page).to have_content('Description can\'t be blank')
+    expect(page).to have_content('Price can\'t be blank')
   end
 
   it 'admin can create categories' do
@@ -82,7 +100,7 @@ describe 'admin', type: :feature do
     within('#edit') do
       fill_in 'Name', with: 'new name'
       fill_in 'Description', with: 'new description'
-      find(:css, "#item_category_ids_[value='11']").set(true)
+      find(:css, "#item_category_ids_[value='#{category2.id}']").set(true)
       click_button 'Update Item'
     end
     click_link 'SHOP'
