@@ -18,7 +18,8 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
       )
 
-      @order.update(status: 'paid')
+      @order.pay!
+      NotificationMessage.new.order_status_update(@order.user.full_name, @order.user.phone, @order.status)
       redirect_to user_path(current_user), notice: "Thanks for the payment!"
     end
 

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new valid_params
     if @user.save
       session[:user_id] = @user.id
+      NotificationMessage.new.welcome(@user.full_name, @user.phone) if @user.phone
       redirect_to @user, notice: "Welcome to your new Bluer Bottle Coffee account."
     else
       flash.now[:errors] = @user.errors.full_messages.join(", ")
@@ -43,7 +44,8 @@ class UsersController < ApplicationController
                                   :email,
                                   :first_name,
                                   :last_name,
-                                  :display_name
+                                  :display_name,
+                                  :phone
     )
   end
 end

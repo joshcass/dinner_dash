@@ -28,7 +28,8 @@ class Admin::UsersController < Admin::BaseController
       :email,
       :first_name,
       :last_name,
-      :display_name
+      :display_name,
+      :phone
     )
   end
 end
