@@ -219,8 +219,6 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    simplecov-rcov (0.2.3)
-      simplecov (>= 0.4.1)
     skylight (0.6.0)
       activesupport (>= 3.0.0)
     sprockets (3.2.0)
@@ -282,7 +280,6 @@ DEPENDENCIES
   sass-rails
   sdoc (~> 0.4.0)
   simplecov
-  simplecov-rcov
   skylight
   stripe!
   twilio-ruby
