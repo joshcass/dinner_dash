@@ -12,3 +12,7 @@
 !/log/.keep
 /tmp
 .idea
+/coverage
+/coverage/*
+coverage/.resultset.json
+coverage/index.html
