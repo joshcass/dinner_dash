@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { Fabricate (:user) }
+  let(:user) { User.new(username: "han",
+                        first_name: "han",
+                        last_name: "solo",
+                        email: "han@solo.com",
+                        password: "password",
+                        password_confirmation: "password") }
 
   it 'is valid' do
     expect(user).to be_valid
@@ -23,7 +28,12 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid without a password' do
-    user.password = nil
+    user = User.new(username: "han",
+             first_name: "han",
+             last_name: "solo",
+             email: "han@solo.com",
+             password: "",
+             password_confirmation: "password")
     expect(user).to_not be_valid
   end
 

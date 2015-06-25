@@ -46,6 +46,10 @@ gem 'simplecov-rcov'
 gem 'twilio-ruby'
 
 gem 'phony_rails'
+
+gem 'omniauth'
+
+gem 'omniauth-twitter'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
