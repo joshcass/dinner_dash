@@ -1,4 +1,7 @@
 require 'database_cleaner'
+require 'simplecov'
+SimpleCov.start
+
 
 RSpec.configure do |config|
   config.before(:suite) do
