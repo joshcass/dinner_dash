@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
+  get 'auth/:provider/callback', to: 'omniauth_sessions#create'
+  get '/twitterlogin' => redirect('auth/twitter'), as: :twitter_login
 end

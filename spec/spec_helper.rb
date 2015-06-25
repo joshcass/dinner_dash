@@ -19,6 +19,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Fabrication.clear_definitions
   end
 
   config.expect_with :rspec do |expectations|

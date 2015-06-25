@@ -42,6 +42,10 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'twilio-ruby'
 
 gem 'phony_rails'
+
+gem 'omniauth'
+
+gem 'omniauth-twitter'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
