@@ -1,56 +1,8 @@
 {<img alt='Stories in Ready' src='https://badge.waffle.io/RMCornell/dinner_dash.png?label=ready&title=Ready' />}[https://waffle.io/RMCornell/dinner_dash]
 == README
-* project spec: http://tutorials.jumpstartlab.com/projects/dinner_dash.html
 
-* Ruby version: 2.2.1
+An e-commerce platform built from the ground up in about two weeks. Separate functionality for users and administrators. Authenication with bcrypt and OAuth. Session based shopping cart. State machine for order status tracking. Twilio text messaging and Stripe payment integraions.
 
-* heroku url: http://dashing-dinner.herokuapp.com
+* Live production URL: http://dashing-dinner.herokuapp.com
 
-* Light Blue Color: Hex: #8deaf8  RGB: 141, 234, 248
-
-* Design Assets: https://www.dropbox.com/sh/lmgjz1dcu0b72bt/AACTmGxMEAj7oZvtKD10qYwHa?dl=0
-
-_____________________________________________________________________________
-
-=== items
-* name
-* description
-* price
-* photo
-
-=== categories
-* name
-
-=== users + admin
-* username
-* password
-* email
-* first name
-* last name
-* display name
-* role - "default" "admin" (enum)
-
-=== orders
-* purchaser name
-* items
-* quantity for each item
-* total for each item
-* total for the order
-* status - "ordered", "paid", "cancelled", "completed" (enum)
-* timestamps
-
-=== Thoughts:
-
-users have many items through orders
-
-items have many users through order / order_items
-
-orders belong to a user and have many items through order_items
-
-users have many orders
-
-items have many orders through order_items
-
-categories have many items
-
-items have many categories
+* Project Spec: http://tutorials.jumpstartlab.com/projects/dinner_dash.html
