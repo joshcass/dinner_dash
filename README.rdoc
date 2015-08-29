@@ -3,6 +3,6 @@
 
 An e-commerce platform built from the ground up in about two weeks. Separate functionality for users and administrators. Authenication with bcrypt and OAuth. Session based shopping cart. State machine for order status tracking. Twilio text messaging and Stripe payment integraions.
 
-* Live production URL: http://dashing-dinner.herokuapp.com
+* Live Production URL: http://dashing-dinner.herokuapp.com
 
 * Project Spec: http://tutorials.jumpstartlab.com/projects/dinner_dash.html
